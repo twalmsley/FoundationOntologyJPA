@@ -1,5 +1,9 @@
 package uk.co.aosd.onto.jpa;
 
+import jakarta.persistence.Entity;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 import uk.co.aosd.onto.events.TransferredFrom;
 import uk.co.aosd.onto.events.TransferredTo;
 import uk.co.aosd.onto.foundation.Event;
@@ -11,9 +15,15 @@ import uk.co.aosd.onto.ownership.Owning;
  *
  * @author Tony Walmsley
  */
-public record OwningJpa<A extends Event, B extends Event, C extends Event, D extends Event>(String identifier, String actionsDescription,
-    Individual<A, B> owner, Individual<C, D> owned, TransferredFrom beginning, TransferredTo ending) implements Owning<A, B, C, D> {
-    public OwningJpa {
-        ensureValid(beginning, ending);
-    }
+@Entity
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
+public class OwningJpa<A extends Event, B extends Event, C extends Event, D extends Event> implements Owning<A, B, C, D> {
+    private String identifier;
+    private String actionsDescription;
+    private Individual<A, B> owner;
+    private Individual<C, D> owned;
+    private TransferredFrom beginning;
+    private TransferredTo ending;
 }

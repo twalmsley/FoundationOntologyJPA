@@ -1,5 +1,9 @@
 package uk.co.aosd.onto.jpa;
 
+import jakarta.persistence.Entity;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 import uk.co.aosd.onto.events.Dissolved;
 import uk.co.aosd.onto.events.Formed;
 import uk.co.aosd.onto.foundation.Class;
@@ -13,9 +17,16 @@ import uk.co.aosd.onto.signifying.Signifier;
  *
  * @author Tony Walmsley
  */
-public record OrganisationJpa<R extends Role>(String identifier, Class<Membership<R>> members, String purpose, Class<Organisation> units,
-    Class<Signifier<String>> names, Formed beginning, Dissolved ending) implements Organisation {
-    public OrganisationJpa {
-        ensureValid(beginning, ending);
-    }
+@Entity
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
+public class OrganisationJpa<R extends Role> implements Organisation {
+    private String identifier;
+    private Class<Membership<R>> members;
+    private String purpose;
+    private Class<Organisation> units;
+    private Class<Signifier<String>> names;
+    private Formed beginning;
+    private Dissolved ending;
 }

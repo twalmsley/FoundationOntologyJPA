@@ -1,8 +1,12 @@
-Jpa uk.co.aosd.onto.jpa;
+package uk.co.aosd.onto.jpa;
 
 import java.util.Optional;
 import java.util.Set;
 
+import jakarta.persistence.Entity;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 import uk.co.aosd.onto.foundation.UniquelyIdentifiable;
 import uk.co.aosd.onto.model.Model;
 
@@ -11,14 +15,16 @@ import uk.co.aosd.onto.model.Model;
  *
  * @author Tony Walmsley
  */
-public record ModelJpa(String identifier, Set<UniquelyIdentifiable> things) implements Model {
-
-    public String identifier() {
-        return identifier;
-    }
+@Entity
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
+public class ModelJpa implements Model {
+    private String identifier;
+    private Set<UniquelyIdentifiable> things;
 
     public Optional<UniquelyIdentifiable> getThing(final String identifier) {
-        return things.stream().filter(t -> t.identifier().equals(identifier)).findAny();
+        return things.stream().filter(t -> t.getIdentifier().equals(identifier)).findAny();
     }
 
     public void add(final UniquelyIdentifiable thing) {

@@ -1,5 +1,9 @@
 package uk.co.aosd.onto.jpa;
 
+import jakarta.persistence.Entity;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 import uk.co.aosd.onto.foundation.ScalarValue;
 import uk.co.aosd.onto.foundation.Unit;
 
@@ -8,6 +12,11 @@ import uk.co.aosd.onto.foundation.Unit;
  *
  * @author Tony Walmsley
  */
-public record ScalarValueJpa<T extends Number, U extends Unit>(T value, U unit) implements ScalarValue<T, U> {
-
+@Entity
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
+public class ScalarValueJpa<T extends Number, U extends Unit> implements ScalarValue<T, U> {
+    private T value;
+    private U unit;
 }

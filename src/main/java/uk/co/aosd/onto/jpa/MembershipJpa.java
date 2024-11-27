@@ -20,9 +20,9 @@ import uk.co.aosd.onto.organisation.Membership;
 @AllArgsConstructor
 @NoArgsConstructor
 public class MembershipJpa<R extends Role> implements Membership<R> {
-    String identifier;
-    Human member;
-    R role;
-    Appointed beginning;
-    Removed ending;
+    private String identifier;
+    private Human member;
+    private R role;
+    private Appointed beginning;
+    private Removed ending;
 }

@@ -2,6 +2,10 @@ package uk.co.aosd.onto.jpa;
 
 import java.util.Set;
 
+import jakarta.persistence.Entity;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 import uk.co.aosd.onto.events.Created;
 import uk.co.aosd.onto.events.Deleted;
 import uk.co.aosd.onto.foundation.Event;
@@ -13,9 +17,13 @@ import uk.co.aosd.onto.foundation.PossibleWorld;
  *
  * @author Tony Walmsley
  */
-public record PossibleWorldJpa(String identifier, Set<Individual<? extends Event, ? extends Event>> parts, Created beginning,
-    Deleted ending) implements PossibleWorld {
-    public PossibleWorldJpa {
-        ensureValid(beginning, ending);
-    }
+@Entity
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
+public class PossibleWorldJpa implements PossibleWorld {
+    private String identifier;
+    private Set<Individual<? extends Event, ? extends Event>> parts;
+    private Created beginning;
+    private Deleted ending;
 }

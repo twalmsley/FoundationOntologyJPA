@@ -1,7 +1,11 @@
-Jpa uk.co.aosd.onto.jpa;
+package uk.co.aosd.onto.jpa;
 
 import java.util.Set;
 
+import jakarta.persistence.Entity;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 import uk.co.aosd.onto.foundation.Property;
 import uk.co.aosd.onto.foundation.UniquelyIdentifiable;
 
@@ -10,7 +14,12 @@ import uk.co.aosd.onto.foundation.UniquelyIdentifiable;
  *
  * @author Tony Walmsley
  */
-public record PropertyJpa<T extends UniquelyIdentifiable, U>(String identifier, Set<T> members, U property)
-    implements Property<T, U> {
-
+@Entity
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
+public class PropertyJpa<T extends UniquelyIdentifiable, U> implements Property<T, U> {
+    private String identifier;
+    private Set<T> members;
+    private U property;
 }

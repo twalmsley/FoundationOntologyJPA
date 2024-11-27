@@ -2,6 +2,10 @@ package uk.co.aosd.onto.jpa;
 
 import java.time.Instant;
 
+import jakarta.persistence.Entity;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 import uk.co.aosd.onto.foundation.Event;
 import uk.co.aosd.onto.foundation.Individual;
 import uk.co.aosd.onto.foundation.ScalarAttribute;
@@ -13,7 +17,14 @@ import uk.co.aosd.onto.foundation.Unit;
  *
  * @author Tony Walmsley
  */
-public record ScalarAttributeJpa<I extends Individual<? extends Event, ? extends Event>, N extends Number, U extends Unit>(String identifier, I individual,
-    ScalarValue<N, U> property, Instant from, Instant to) implements ScalarAttribute<I, N, U> {
-
+@Entity
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
+public class ScalarAttributeJpa<I extends Individual<? extends Event, ? extends Event>, N extends Number, U extends Unit> implements ScalarAttribute<I, N, U> {
+    private String identifier;
+    private I individual;
+    private ScalarValue<N, U> property;
+    private Instant from;
+    private Instant to;
 }
