@@ -121,9 +121,9 @@
         </repository>
     </distributionManagement>
     <scm>
-        <connection>scm:git:git@github.com:twalmsley/FoundationOntology.git</connection>
-        <developerConnection>scm:git:git@github.com:twalmsley/FoundationOntology.git</developerConnection>
-        <url>https://github.com/twalmsley/FoundationOntology</url>
+        <connection>scm:git:git@github.com:twalmsley/FoundationOntologyJPA.git</connection>
+        <developerConnection>scm:git:git@github.com:twalmsley/FoundationOntologyJPA.git</developerConnection>
+        <url>https://github.com/twalmsley/FoundationOntologyJPA</url>
         <tag>v0.0.1</tag>
     </scm>
     <repositories>
