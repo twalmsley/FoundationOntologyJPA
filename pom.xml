@@ -118,13 +118,13 @@
         <repository>
             <id>github</id>
             <name>GitHub Packages</name>
-            <url>https://maven.pkg.github.com/twalmsley/FoundationOntologyJPA</url>
+            <url>https://maven.pkg.github.com/twalmsley/FoundationOntology</url>
         </repository>
     </distributionManagement>
     <scm>
-        <connection>scm:git:git@github.com:twalmsley/FoundationOntologyJPA.git</connection>
-        <developerConnection>scm:git:git@github.com:twalmsley/FoundationOntologyJPA.git</developerConnection>
-        <url>https://github.com/twalmsley/FoundationOntologyJPA</url>
+        <connection>scm:git:git@github.com:twalmsley/FoundationOntology.git</connection>
+        <developerConnection>scm:git:git@github.com:twalmsley/FoundationOntology.git</developerConnection>
+        <url>https://github.com/twalmsley/FoundationOntology</url>
         <tag>HEAD</tag>
     </scm>
     <repositories>
