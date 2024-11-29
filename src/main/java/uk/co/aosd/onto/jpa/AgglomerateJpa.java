@@ -33,7 +33,7 @@ public class AgglomerateJpa implements Agglomerate {
     private String identifier;
 
     @OneToMany(cascade = CascadeType.ALL)
-    private Set<Individual<? extends Event, ? extends Event>> parts;
+    private Set<IndividualJpa> parts;
 
     @OneToOne(cascade = CascadeType.ALL, targetEntity = AggregatedJpa.class)
     private Aggregated beginning;
@@ -41,4 +41,14 @@ public class AgglomerateJpa implements Agglomerate {
     @OneToOne(cascade = CascadeType.ALL, targetEntity = DisaggregatedJpa.class)
     private Disaggregated ending;
 
+    /**
+     * Get the parts of this agglomerate.
+     */
+    public Set<Individual<? extends Event, ? extends Event>> getParts() {
+        if (this.parts == null) {
+            return Set.of();
+        }
+        final Set<Individual<? extends Event, ? extends Event>> parts = Set.copyOf(this.parts);
+        return parts;
+    }
 }

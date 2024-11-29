@@ -15,8 +15,6 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import uk.co.aosd.onto.events.Aggregated;
 import uk.co.aosd.onto.events.Disaggregated;
-import uk.co.aosd.onto.foundation.Event;
-import uk.co.aosd.onto.foundation.Individual;
 import uk.co.aosd.onto.jpa.events.AggregatedJpa;
 import uk.co.aosd.onto.jpa.events.DisaggregatedJpa;
 
@@ -59,7 +57,7 @@ public class AgglomerateTest {
 
     @Test
     public void test() {
-        final Set<Individual<? extends Event, ? extends Event>> parts = null;
+        final Set<IndividualJpa> parts = null;
         final Aggregated beginning = new AggregatedJpa("aggEvent1", null, null);
         final Disaggregated ending = new DisaggregatedJpa("disaggEvent1", null, null);
         final var entity = new AgglomerateJpa("agg1", parts, beginning, ending);
