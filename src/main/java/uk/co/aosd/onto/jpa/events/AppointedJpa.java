@@ -15,7 +15,7 @@ import uk.co.aosd.onto.events.Appointed;
  *
  * @author Tony Walmsley
  */
-@Entity
+@Entity(name = "APPOINTED_EVENT")
 @Data
 @AllArgsConstructor
 @NoArgsConstructor

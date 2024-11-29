@@ -15,7 +15,7 @@ import uk.co.aosd.onto.events.Scrapped;
  *
  * @author Tony Walmsley
  */
-@Entity
+@Entity(name = "SCRAPPED_EVENT")
 @Data
 @AllArgsConstructor
 @NoArgsConstructor

@@ -15,7 +15,7 @@ import uk.co.aosd.onto.events.Disassembled;
  *
  * @author Tony Walmsley
  */
-@Entity
+@Entity(name = "DISASSEMBLED_EVENT")
 @Data
 @AllArgsConstructor
 @NoArgsConstructor

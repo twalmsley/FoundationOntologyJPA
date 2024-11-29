@@ -15,7 +15,7 @@ import uk.co.aosd.onto.events.Changed;
  *
  * @author Tony Walmsley
  */
-@Entity
+@Entity(name = "CHANGED_EVENT")
 @Data
 @AllArgsConstructor
 @NoArgsConstructor

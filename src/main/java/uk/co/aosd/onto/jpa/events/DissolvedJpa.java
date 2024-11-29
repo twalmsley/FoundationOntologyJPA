@@ -15,7 +15,7 @@ import uk.co.aosd.onto.events.Dissolved;
  *
  * @author Tony Walmsley
  */
-@Entity
+@Entity(name = "DISSOLVED_EVENT")
 @Data
 @AllArgsConstructor
 @NoArgsConstructor

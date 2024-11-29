@@ -15,7 +15,7 @@ import uk.co.aosd.onto.events.Formed;
  *
  * @author Tony Walmsley
  */
-@Entity
+@Entity(name = "FORMED_EVENT")
 @Data
 @AllArgsConstructor
 @NoArgsConstructor

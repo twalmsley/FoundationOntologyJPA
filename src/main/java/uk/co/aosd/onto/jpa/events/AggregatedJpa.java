@@ -15,7 +15,7 @@ import uk.co.aosd.onto.events.Aggregated;
  *
  * @author Tony Walmsley
  */
-@Entity
+@Entity(name = "AGGREGATED_EVENT")
 @Data
 @AllArgsConstructor
 @NoArgsConstructor

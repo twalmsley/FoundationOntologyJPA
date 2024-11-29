@@ -15,7 +15,7 @@ import uk.co.aosd.onto.events.Resignified;
  *
  * @author Tony Walmsley
  */
-@Entity
+@Entity(name = "RESIGNIFIED_EVENT")
 @Data
 @AllArgsConstructor
 @NoArgsConstructor

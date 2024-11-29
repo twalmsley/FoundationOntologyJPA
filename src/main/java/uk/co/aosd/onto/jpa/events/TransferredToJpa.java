@@ -15,7 +15,7 @@ import uk.co.aosd.onto.events.TransferredTo;
  *
  * @author Tony Walmsley
  */
-@Entity
+@Entity(name = "TRANSFERRED_TO_EVENT")
 @Data
 @AllArgsConstructor
 @NoArgsConstructor

@@ -15,7 +15,7 @@ import uk.co.aosd.onto.events.Destroyed;
  *
  * @author Tony Walmsley
  */
-@Entity
+@Entity(name = "DESTROYED_EVENT")
 @Data
 @AllArgsConstructor
 @NoArgsConstructor

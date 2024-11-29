@@ -15,7 +15,7 @@ import uk.co.aosd.onto.events.Death;
  *
  * @author Tony Walmsley
  */
-@Entity
+@Entity(name = "DEATH_EVENT")
 @Data
 @AllArgsConstructor
 @NoArgsConstructor

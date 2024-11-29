@@ -15,7 +15,7 @@ import uk.co.aosd.onto.events.Decommissioned;
  *
  * @author Tony Walmsley
  */
-@Entity
+@Entity(name = "DECOMMISSIONED_EVENT")
 @Data
 @AllArgsConstructor
 @NoArgsConstructor

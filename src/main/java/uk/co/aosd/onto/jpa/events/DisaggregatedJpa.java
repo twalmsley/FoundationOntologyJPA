@@ -15,7 +15,7 @@ import uk.co.aosd.onto.events.Disaggregated;
  *
  * @author Tony Walmsley
  */
-@Entity
+@Entity(name = "DISAGGREGATED_EVENT")
 @Data
 @AllArgsConstructor
 @NoArgsConstructor

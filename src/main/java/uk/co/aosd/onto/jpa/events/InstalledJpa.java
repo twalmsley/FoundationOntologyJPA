@@ -15,7 +15,7 @@ import uk.co.aosd.onto.events.Installed;
  *
  * @author Tony Walmsley
  */
-@Entity
+@Entity(name = "INSTALLED_EVENT")
 @Data
 @AllArgsConstructor
 @NoArgsConstructor

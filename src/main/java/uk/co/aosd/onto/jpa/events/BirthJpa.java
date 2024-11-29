@@ -15,7 +15,7 @@ import uk.co.aosd.onto.events.Birth;
  *
  * @author Tony Walmsley
  */
-@Entity
+@Entity(name = "BIRTH_EVENT")
 @Data
 @AllArgsConstructor
 @NoArgsConstructor

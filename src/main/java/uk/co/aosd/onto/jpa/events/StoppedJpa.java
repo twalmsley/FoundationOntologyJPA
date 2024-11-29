@@ -15,7 +15,7 @@ import uk.co.aosd.onto.events.Stopped;
  *
  * @author Tony Walmsley
  */
-@Entity
+@Entity(name = "STOPPED_EVENT")
 @Data
 @AllArgsConstructor
 @NoArgsConstructor

@@ -15,7 +15,7 @@ import uk.co.aosd.onto.events.Bought;
  *
  * @author Tony Walmsley
  */
-@Entity
+@Entity(name = "BOUGHT_EVENT")
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
