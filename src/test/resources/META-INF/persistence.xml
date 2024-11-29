@@ -30,6 +30,8 @@
         <class>uk.co.aosd.onto.jpa.events.StoppedJpa</class>
         <class>uk.co.aosd.onto.jpa.events.TransferredFromJpa</class>
         <class>uk.co.aosd.onto.jpa.events.TransferredToJpa</class>
+
+        <class>uk.co.aosd.onto.jpa.AgglomerateJpa</class>
         <properties>
             <property name="javax.persistence.jdbc.driver" value="org.h2.Driver"/>
             <property name="javax.persistence.jdbc.url" value="jdbc:h2:mem:testdb;DB_CLOSE_DELAY=-1"/>

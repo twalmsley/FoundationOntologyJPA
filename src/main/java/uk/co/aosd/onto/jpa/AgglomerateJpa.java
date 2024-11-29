@@ -15,6 +15,8 @@ import uk.co.aosd.onto.events.Disaggregated;
 import uk.co.aosd.onto.foundation.Agglomerate;
 import uk.co.aosd.onto.foundation.Event;
 import uk.co.aosd.onto.foundation.Individual;
+import uk.co.aosd.onto.jpa.events.AggregatedJpa;
+import uk.co.aosd.onto.jpa.events.DisaggregatedJpa;
 
 /**
  * An implementation of the Agglomerate interface.
@@ -33,10 +35,10 @@ public class AgglomerateJpa implements Agglomerate {
     @OneToMany(cascade = CascadeType.ALL)
     private Set<Individual<? extends Event, ? extends Event>> parts;
 
-    @OneToOne(cascade = CascadeType.ALL)
+    @OneToOne(cascade = CascadeType.ALL, targetEntity = AggregatedJpa.class)
     private Aggregated beginning;
 
-    @OneToOne(cascade = CascadeType.ALL)
+    @OneToOne(cascade = CascadeType.ALL, targetEntity = DisaggregatedJpa.class)
     private Disaggregated ending;
 
 }
