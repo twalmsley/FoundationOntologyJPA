@@ -2,12 +2,9 @@ package uk.co.aosd.onto.jpa.events;
 
 import java.time.Instant;
 
-import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import lombok.AllArgsConstructor;
 import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.EqualsAndHashCode;
 import uk.co.aosd.onto.events.Formed;
 
 /**
@@ -17,16 +14,9 @@ import uk.co.aosd.onto.events.Formed;
  */
 @Entity(name = "FORMED_EVENT")
 @Data
-@AllArgsConstructor
-@NoArgsConstructor
-public class FormedJpa implements Formed {
-    @Id
-    private String identifier;
-
-    @Column(name = "beginning")
-    private Instant from;
-
-    @Column(name = "ending")
-    private Instant to;
-
+@EqualsAndHashCode(callSuper = true)
+public class FormedJpa extends EventJpa implements Formed {
+    public FormedJpa(final String identifier, final Instant from, final Instant to) {
+        super(identifier, from, to);
+    }
 }

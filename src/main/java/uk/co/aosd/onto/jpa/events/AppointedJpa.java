@@ -2,12 +2,9 @@ package uk.co.aosd.onto.jpa.events;
 
 import java.time.Instant;
 
-import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import lombok.AllArgsConstructor;
 import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.EqualsAndHashCode;
 import uk.co.aosd.onto.events.Appointed;
 
 /**
@@ -17,16 +14,9 @@ import uk.co.aosd.onto.events.Appointed;
  */
 @Entity(name = "APPOINTED_EVENT")
 @Data
-@AllArgsConstructor
-@NoArgsConstructor
-public class AppointedJpa implements Appointed {
-    @Id
-    private String identifier;
-
-    @Column(name = "beginning")
-    private Instant from;
-
-    @Column(name = "ending")
-    private Instant to;
-
+@EqualsAndHashCode(callSuper = true)
+public class AppointedJpa extends EventJpa implements Appointed {
+    public AppointedJpa(final String identifier, final Instant from, final Instant to) {
+        super(identifier, from, to);
+    }
 }
