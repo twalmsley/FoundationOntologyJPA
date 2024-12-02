@@ -33,6 +33,7 @@
 
         <class>uk.co.aosd.onto.jpa.AgglomerateJpa</class>
         <class>uk.co.aosd.onto.jpa.AggregateJpa</class>
+        <class>uk.co.aosd.onto.jpa.AttributeJpa</class>
         <class>uk.co.aosd.onto.jpa.EventJpa</class>
         <class>uk.co.aosd.onto.jpa.IndividualJpa</class>
         <properties>
