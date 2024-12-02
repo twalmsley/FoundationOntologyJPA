@@ -13,7 +13,6 @@ import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import uk.co.aosd.onto.foundation.Aggregate;
 import uk.co.aosd.onto.jpa.events.AggregatedJpa;
 import uk.co.aosd.onto.jpa.events.DisaggregatedJpa;
 import uk.co.aosd.onto.units.Units;
@@ -70,7 +69,7 @@ public class AggregateTest {
         em.persist(entity);
         em.getTransaction().commit();
 
-        final var found = em.find(Aggregate.class, entity.getIdentifier());
+        final var found = em.find(AggregateJpa.class, entity.getIdentifier());
         assertNotNull(found);
         assertEquals(entity.getIdentifier(), found.getIdentifier());
         assertEquals(entity.getQuantity(), found.getQuantity());

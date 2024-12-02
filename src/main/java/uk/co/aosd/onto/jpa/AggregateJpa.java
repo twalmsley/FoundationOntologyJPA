@@ -16,6 +16,7 @@ import uk.co.aosd.onto.foundation.Aggregate;
 import uk.co.aosd.onto.foundation.ScalarValue;
 import uk.co.aosd.onto.foundation.Unit;
 import uk.co.aosd.onto.jpa.converters.ClassConverter;
+import uk.co.aosd.onto.jpa.converters.ScalarValueConverter;
 import uk.co.aosd.onto.jpa.events.AggregatedJpa;
 import uk.co.aosd.onto.jpa.events.DisaggregatedJpa;
 
@@ -37,7 +38,8 @@ public class AggregateJpa<N extends Number, U extends Unit, T> implements Aggreg
     @Target(Class.class)
     private Class<T> kind;
 
-    @OneToOne(cascade = CascadeType.ALL, targetEntity = ScalarValueJpa.class)
+    @Convert(converter = ScalarValueConverter.class)
+    @Target(ScalarValue.class)
     private ScalarValue<N, U> quantity;
 
     @OneToOne(cascade = CascadeType.ALL, targetEntity = AggregatedJpa.class)
