@@ -1,6 +1,7 @@
 package uk.co.aosd.onto.jpa;
 
 import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -17,6 +18,7 @@ import uk.co.aosd.onto.money.Currency;
 @NoArgsConstructor
 public class CurrencyJpa implements Currency {
 
+    @Id
     private String identifier;
     private String abbreviation;
     private String name;
