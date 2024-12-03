@@ -36,6 +36,7 @@
         <class>uk.co.aosd.onto.jpa.AttributeJpa</class>
         <class>uk.co.aosd.onto.jpa.ClassJpa</class>
         <class>uk.co.aosd.onto.jpa.CurrencyJpa</class>
+        <class>uk.co.aosd.onto.jpa.DNAJpa</class>
         <class>uk.co.aosd.onto.jpa.EventJpa</class>
         <class>uk.co.aosd.onto.jpa.IndividualJpa</class>
         <class>uk.co.aosd.onto.jpa.UniquelyIdentifiableJpa</class>
