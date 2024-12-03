@@ -4,8 +4,9 @@ import java.util.Optional;
 import java.util.Set;
 
 import jakarta.persistence.Entity;
-import lombok.AllArgsConstructor;
+import jakarta.persistence.OneToMany;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 import uk.co.aosd.onto.foundation.UniquelyIdentifiable;
 import uk.co.aosd.onto.model.Model;
@@ -17,10 +18,11 @@ import uk.co.aosd.onto.model.Model;
  */
 @Entity
 @Data
-@AllArgsConstructor
 @NoArgsConstructor
-public class ModelJpa implements Model {
-    private String identifier;
+@EqualsAndHashCode(callSuper = true)
+public class ModelJpa extends UniquelyIdentifiableJpa implements Model {
+
+    @OneToMany(targetEntity = UniquelyIdentifiableJpa.class)
     private Set<UniquelyIdentifiable> things;
 
     public Optional<UniquelyIdentifiable> getThing(final String identifier) {
@@ -29,5 +31,10 @@ public class ModelJpa implements Model {
 
     public void add(final UniquelyIdentifiable thing) {
         things.add(thing);
+    }
+
+    public ModelJpa(final String identifier, final Set<UniquelyIdentifiable> things) {
+        super(identifier);
+        this.things = things;
     }
 }

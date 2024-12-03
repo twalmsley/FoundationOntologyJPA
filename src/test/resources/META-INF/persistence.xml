@@ -43,6 +43,7 @@
         <class>uk.co.aosd.onto.jpa.HumanJpa</class>
         <class>uk.co.aosd.onto.jpa.IndividualJpa</class>
         <class>uk.co.aosd.onto.jpa.LanguageJpa</class>
+        <class>uk.co.aosd.onto.jpa.ModelJpa</class>
         <class>uk.co.aosd.onto.jpa.OrganisationJpa</class>
         <class>uk.co.aosd.onto.jpa.UniquelyIdentifiableJpa</class>
         <properties>
@@ -52,7 +53,7 @@
             <property name="javax.persistence.jdbc.password" value=""/>
             <property name="hibernate.dialect" value="org.hibernate.dialect.H2Dialect"/>
             <property name="hibernate.hbm2ddl.auto" value="update"/>
-            <property name="hibernate.show_sql" value="true"/>
+            <property name="hibernate.show_sql" value="false"/>
         </properties>
     </persistence-unit>
 </persistence>
