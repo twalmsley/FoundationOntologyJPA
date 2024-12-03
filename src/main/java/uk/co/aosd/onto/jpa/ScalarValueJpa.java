@@ -20,7 +20,7 @@ public class ScalarValueJpa<T extends Number, U extends Unit> implements ScalarV
     private U unit;
 
     /**
-     * Create a new ScalarValue from a Sringified value.
+     * Create a new ScalarValue from a Stringified value.
      *
      * @param dbData
      *            String-form of the value.
