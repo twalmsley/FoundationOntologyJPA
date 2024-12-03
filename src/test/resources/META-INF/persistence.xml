@@ -48,6 +48,7 @@
         <class>uk.co.aosd.onto.jpa.OrganisationJpa</class>
         <class>uk.co.aosd.onto.jpa.OwningJpa</class>
         <class>uk.co.aosd.onto.jpa.PossibleWorldJpa</class>
+        <class>uk.co.aosd.onto.jpa.PropertyJpa</class>
         <class>uk.co.aosd.onto.jpa.UniquelyIdentifiableJpa</class>
         <properties>
             <property name="javax.persistence.jdbc.driver" value="org.h2.Driver"/>
