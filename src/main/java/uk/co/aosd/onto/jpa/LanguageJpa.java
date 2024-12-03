@@ -1,8 +1,8 @@
 package uk.co.aosd.onto.jpa;
 
 import jakarta.persistence.Entity;
-import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 import uk.co.aosd.onto.language.Language;
 
@@ -13,9 +13,14 @@ import uk.co.aosd.onto.language.Language;
  */
 @Entity
 @Data
-@AllArgsConstructor
 @NoArgsConstructor
-public class LanguageJpa implements Language {
-    private String identifier;
+@EqualsAndHashCode(callSuper = true)
+public class LanguageJpa extends UniquelyIdentifiableJpa implements Language {
+
     private String name;
+
+    public LanguageJpa(final String identifier, final String name) {
+        super(identifier);
+        this.name = name;
+    }
 }

@@ -37,8 +37,13 @@
         <class>uk.co.aosd.onto.jpa.ClassJpa</class>
         <class>uk.co.aosd.onto.jpa.CurrencyJpa</class>
         <class>uk.co.aosd.onto.jpa.DNAJpa</class>
+        <class>uk.co.aosd.onto.jpa.EmployeeRoleJpa</class>
+        <class>uk.co.aosd.onto.jpa.EmploymentJpa</class>
         <class>uk.co.aosd.onto.jpa.EventJpa</class>
+        <class>uk.co.aosd.onto.jpa.HumanJpa</class>
         <class>uk.co.aosd.onto.jpa.IndividualJpa</class>
+        <class>uk.co.aosd.onto.jpa.LanguageJpa</class>
+        <class>uk.co.aosd.onto.jpa.OrganisationJpa</class>
         <class>uk.co.aosd.onto.jpa.UniquelyIdentifiableJpa</class>
         <properties>
             <property name="javax.persistence.jdbc.driver" value="org.h2.Driver"/>
@@ -47,7 +52,7 @@
             <property name="javax.persistence.jdbc.password" value=""/>
             <property name="hibernate.dialect" value="org.hibernate.dialect.H2Dialect"/>
             <property name="hibernate.hbm2ddl.auto" value="update"/>
-            <property name="hibernate.show_sql" value="false"/>
+            <property name="hibernate.show_sql" value="true"/>
         </properties>
     </persistence-unit>
 </persistence>
