@@ -112,6 +112,7 @@ public class EmploymentTest {
             removed);
 
         em.getTransaction().begin();
+        em.persist(english);
         em.persist(entity);
         em.getTransaction().commit();
 

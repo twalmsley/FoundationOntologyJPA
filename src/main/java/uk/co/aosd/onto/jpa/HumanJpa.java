@@ -39,7 +39,7 @@ public class HumanJpa extends UniquelyIdentifiableJpa implements Human {
     @ManyToOne(targetEntity = LanguageJpa.class, cascade = { CascadeType.PERSIST, CascadeType.MERGE })
     private Language nativeLanguage;
 
-    @OneToOne(targetEntity = ClassJpa.class, cascade = { CascadeType.ALL })
+    @OneToOne(targetEntity = ClassJpa.class, cascade = { CascadeType.PERSIST, CascadeType.MERGE })
     private Class<Language> languages;
 
     @OneToOne(targetEntity = DNAJpa.class, cascade = { CascadeType.ALL })
