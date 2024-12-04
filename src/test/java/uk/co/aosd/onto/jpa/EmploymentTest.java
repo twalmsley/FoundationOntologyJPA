@@ -81,7 +81,7 @@ public class EmploymentTest {
         final Death death = new DeathJpa("death-1", Instant.now(), Instant.now());
         final Resignified personNameFrom = new ResignifiedJpa("person-name-from", Instant.now(), Instant.now());
         final Resignified personNameTo = new ResignifiedJpa("person-name-to", Instant.now(), Instant.now());
-        final Signifier<String> personName1 = new SignifierJpa<>("person-name-1", "Person Name 1", english, personNameFrom, personNameTo);
+        final Signifier<String> personName1 = new SignifierJpa("person-name-1", "Person Name 1", english, personNameFrom, personNameTo);
         final Class<Signifier<String>> personNames = new ClassJpa<>("person-names-1", Set.of(personName1));
         final Class<Language> languages = new ClassJpa<>("languages-1", Set.of(english));
         final DNA dna = new DNAJpa("dna-1", "ATCG");
@@ -98,7 +98,7 @@ public class EmploymentTest {
         final Dissolved ending = new DissolvedJpa("dissolved-1", Instant.now(), Instant.now());
         final Resignified namedFrom = new ResignifiedJpa("namedFrom", Instant.now(), Instant.now());
         final Resignified namedTo = new ResignifiedJpa("namedTo", Instant.now(), Instant.now());
-        final Signifier<String> name1 = new SignifierJpa<>("name1", "Name 1", english, namedFrom, namedTo);
+        final Signifier<String> name1 = new SignifierJpa("name1", "Name 1", english, namedFrom, namedTo);
         final Class<Signifier<String>> names = new ClassJpa<>("names1", Set.of(name1));
         final Organisation org = new OrganisationJpa<EmployeeRole>("org-1", members, "To make money", units, names, beginning, ending);
 

@@ -43,14 +43,20 @@
         <class>uk.co.aosd.onto.jpa.HumanJpa</class>
         <class>uk.co.aosd.onto.jpa.IndividualJpa</class>
         <class>uk.co.aosd.onto.jpa.LanguageJpa</class>
+        <class>uk.co.aosd.onto.jpa.MembershipJpa</class>
         <class>uk.co.aosd.onto.jpa.ModelJpa</class>
         <class>uk.co.aosd.onto.jpa.MonetaryValueJpa</class>
         <class>uk.co.aosd.onto.jpa.OrganisationJpa</class>
         <class>uk.co.aosd.onto.jpa.OwningJpa</class>
         <class>uk.co.aosd.onto.jpa.PossibleWorldJpa</class>
         <class>uk.co.aosd.onto.jpa.PropertyJpa</class>
+        <class>uk.co.aosd.onto.jpa.RoleJpa</class>
         <class>uk.co.aosd.onto.jpa.ScalarAttributeJpa</class>
         <class>uk.co.aosd.onto.jpa.ScalarPropertyJpa</class>
+        <class>uk.co.aosd.onto.jpa.SignifierJpa</class>
+        <class>uk.co.aosd.onto.jpa.SignifyingJpa</class>
+        <class>uk.co.aosd.onto.jpa.StateJpa</class>
+        <class>uk.co.aosd.onto.jpa.TransferringOfOwnershipJpa</class>
         <class>uk.co.aosd.onto.jpa.UniquelyIdentifiableJpa</class>
         <properties>
             <property name="javax.persistence.jdbc.driver" value="org.h2.Driver"/>

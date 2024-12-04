@@ -63,9 +63,10 @@ public class OntologyServicesJpa implements OntologyServices {
         return new LanguageJpa(identifier, name);
     }
 
+    @SuppressWarnings("unchecked")
     @Override
     public <T> Signifier<T> createSignifier(final String identifier, final T value, final Language language, final Resignified from, final Resignified to) {
-        return new SignifierJpa<T>(identifier, value, language, from, to);
+        return (Signifier<T>) new SignifierJpa(identifier, value.toString(), language, from, to);
     }
 
     @Override
