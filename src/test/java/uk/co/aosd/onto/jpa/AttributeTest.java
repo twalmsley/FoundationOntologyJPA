@@ -15,6 +15,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import uk.co.aosd.onto.jpa.events.BuiltJpa;
 import uk.co.aosd.onto.jpa.events.ScrappedJpa;
+import uk.co.aosd.onto.units.Units;
 
 /**
  * Test persistence for Attributes.
@@ -54,7 +55,7 @@ public class AttributeTest {
     }
 
     @Test
-    public void test() {
+    public void testAttribute() {
         final Instant to = Instant.now();
         final Instant from = to.minusSeconds(60);
         final var beginning = new BuiltJpa("built1", from, to);
@@ -67,6 +68,29 @@ public class AttributeTest {
         em.getTransaction().commit();
 
         final var found = em.find(AttributeJpa.class, entity.getIdentifier());
+        assertNotNull(found);
+        assertEquals(entity.getIdentifier(), found.getIdentifier());
+        assertEquals(entity.getIndividual(), found.getIndividual());
+        assertEquals(entity.getProperty(), found.getProperty());
+        assertEquals(entity.getFrom(), found.getFrom());
+        assertEquals(entity.getTo(), found.getTo());
+    }
+
+    @Test
+    public void testScalarAttribute() {
+        final Instant to = Instant.now();
+        final Instant from = to.minusSeconds(60);
+        final var beginning = new BuiltJpa("built021", from, to);
+        final var ending = new ScrappedJpa("scrapped02", from, to);
+        final var ind = new IndividualJpa("ind02", beginning, ending);
+        final var scalarValue = new ScalarValueJpa<>(1, Units.METERS);
+        final var entity = new ScalarAttributeJpa<>("id02", ind, scalarValue, from, to);
+
+        em.getTransaction().begin();
+        em.persist(entity);
+        em.getTransaction().commit();
+
+        final var found = em.find(ScalarAttributeJpa.class, entity.getIdentifier());
         assertNotNull(found);
         assertEquals(entity.getIdentifier(), found.getIdentifier());
         assertEquals(entity.getIndividual(), found.getIndividual());
