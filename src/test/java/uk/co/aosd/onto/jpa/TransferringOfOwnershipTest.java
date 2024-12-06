@@ -64,23 +64,23 @@ public class TransferringOfOwnershipTest {
     @Test
     public void test() {
         final var svc = new OntologyServicesJpa();
-        final var ownerBorn = new BirthJpa("ownerBorn", Instant.now(), Instant.now());
-        final var ownerDied = new DeathJpa("ownerDied", Instant.now(), Instant.now());
-        final var owner = new IndividualJpa("owner", ownerBorn, ownerDied);
-        final var ownedCreated = new CreatedJpa("ownedCreated", Instant.now(), Instant.now());
-        final var ownedDestroyed = new DestroyedJpa("ownedDestroyed", Instant.now(), Instant.now());
-        final var owned = new IndividualJpa("owned", ownedCreated, ownedDestroyed);
+        final var ownerBorn = new BirthJpa(Util.randId(), Instant.now(), Instant.now());
+        final var ownerDied = new DeathJpa(Util.randId(), Instant.now(), Instant.now());
+        final var owner = new IndividualJpa(Util.randId(), ownerBorn, ownerDied);
+        final var ownedCreated = new CreatedJpa(Util.randId(), Instant.now(), Instant.now());
+        final var ownedDestroyed = new DestroyedJpa(Util.randId(), Instant.now(), Instant.now());
+        final var owned = new IndividualJpa(Util.randId(), ownedCreated, ownedDestroyed);
 
-        final var own1From = new TransferredFromJpa("own1From", Instant.now(), Instant.now());
-        final var own1To = new TransferredToJpa("own1To", Instant.now(), Instant.now());
-        final var current = new OwningJpa<>("own1", "Owning", owner, owned, own1From, own1To);
+        final var own1From = new TransferredFromJpa(Util.randId(), Instant.now(), Instant.now());
+        final var own1To = new TransferredToJpa(Util.randId(), Instant.now(), Instant.now());
+        final var current = new OwningJpa<>(Util.randId(), "Owning", owner, owned, own1From, own1To);
 
-        final var nextOwnerBorn = new BirthJpa("nextOwnerBown", Instant.now(), Instant.now());
-        final var nextOwnerDied = new DeathJpa("nextOwnerDied", Instant.now(), Instant.now());
-        final var nextOwner = new IndividualJpa("newOwner", nextOwnerBorn, nextOwnerDied);
-        final var txferFrom = new StartedJpa("txferFrom", Instant.now(), Instant.now());
-        final var txFerTo = new StoppedJpa("txferTo", Instant.now(), Instant.now());
-        final var entity = svc.transferOwnership("txfer", "Transferring ownership", current, nextOwner, txferFrom, txFerTo);
+        final var nextOwnerBorn = new BirthJpa(Util.randId(), Instant.now(), Instant.now());
+        final var nextOwnerDied = new DeathJpa(Util.randId(), Instant.now(), Instant.now());
+        final var nextOwner = new IndividualJpa(Util.randId(), nextOwnerBorn, nextOwnerDied);
+        final var txferFrom = new StartedJpa(Util.randId(), Instant.now(), Instant.now());
+        final var txFerTo = new StoppedJpa(Util.randId(), Instant.now(), Instant.now());
+        final var entity = svc.transferOwnership(Util.randId(), "Transferring ownership", current, nextOwner, txferFrom, txFerTo);
 
         em.getTransaction().begin();
         em.persist(entity);

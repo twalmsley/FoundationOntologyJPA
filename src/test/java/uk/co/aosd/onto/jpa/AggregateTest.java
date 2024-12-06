@@ -61,11 +61,11 @@ public class AggregateTest {
         final Instant aggTo = Instant.now();
         final Instant aggFrom = aggTo.minusSeconds(60);
         final var entity = new AggregateJpa<>(
-            "aggregate1",
+            Util.randId(),
             Sand.class,
             new ScalarValueJpa<>(2, Units.KILOGRAMS),
-            new AggregatedJpa("aggregated1", aggFrom, aggFrom),
-            new DisaggregatedJpa("disaggregated1", aggTo, aggTo));
+            new AggregatedJpa(Util.randId(), aggFrom, aggFrom),
+            new DisaggregatedJpa(Util.randId(), aggTo, aggTo));
 
         em.getTransaction().begin();
         em.persist(entity);

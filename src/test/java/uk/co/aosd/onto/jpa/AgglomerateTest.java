@@ -64,17 +64,17 @@ public class AgglomerateTest {
 
     @Test
     public void test() {
-        final EventJpa handleCreated = new CreatedJpa("handleCreated1", null, null);
-        final EventJpa handleDestroyed = new DestroyedJpa("handleDestroyed1", null, null);
-        final EventJpa headBuilt = new BuiltJpa("headCreated1", null, null);
-        final EventJpa headScrapped = new ScrappedJpa("headDestroyed1", null, null);
-        final Aggregated beginning = new AggregatedJpa("aggEvent1", null, null);
-        final Disaggregated ending = new DisaggregatedJpa("disaggEvent1", null, null);
+        final EventJpa handleCreated = new CreatedJpa(Util.randId(), null, null);
+        final EventJpa handleDestroyed = new DestroyedJpa(Util.randId(), null, null);
+        final EventJpa headBuilt = new BuiltJpa(Util.randId(), null, null);
+        final EventJpa headScrapped = new ScrappedJpa(Util.randId(), null, null);
+        final Aggregated beginning = new AggregatedJpa(Util.randId(), null, null);
+        final Disaggregated ending = new DisaggregatedJpa(Util.randId(), null, null);
 
-        final IndividualJpa handle = new IndividualJpa("handle1", handleCreated, handleDestroyed);
-        final IndividualJpa head = new IndividualJpa("head1", headBuilt, headScrapped);
+        final IndividualJpa handle = new IndividualJpa(Util.randId(), handleCreated, handleDestroyed);
+        final IndividualJpa head = new IndividualJpa(Util.randId(), headBuilt, headScrapped);
         final Set<IndividualJpa> parts = Set.of(handle, head);
-        final var entity = new AgglomerateJpa("agg1", parts, beginning, ending);
+        final var entity = new AgglomerateJpa(Util.randId(), parts, beginning, ending);
         em.getTransaction().begin();
         em.persist(entity);
         em.getTransaction().commit();

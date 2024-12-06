@@ -53,7 +53,7 @@ public class DNATest {
 
     @Test
     public void test() {
-        final var entity = new DNAJpa("dna1", "gattaca");
+        final var entity = new DNAJpa(Util.randId(), "gattaca");
 
         em.getTransaction().begin();
         em.persist(entity);

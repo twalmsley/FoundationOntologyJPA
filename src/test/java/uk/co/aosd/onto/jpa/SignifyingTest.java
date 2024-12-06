@@ -59,11 +59,11 @@ public class SignifyingTest {
 
     @Test
     public void test() {
-        final Language english = new LanguageJpa("english", "English");
-        final Resignified personNameFrom = new ResignifiedJpa("person-name-from1", Instant.now(), Instant.now());
-        final Resignified personNameTo = new ResignifiedJpa("person-name-to1", Instant.now(), Instant.now());
-        final UniquelyIdentifiable person = new UniquelyIdentifiableJpa("person1");
-        final SignifyingJpa entity = new SignifyingJpa("sig1", "The act of signifying something", "Alice", english, person, personNameFrom,
+        final Language english = new LanguageJpa(Util.randId(), "English");
+        final Resignified personNameFrom = new ResignifiedJpa(Util.randId(), Instant.now(), Instant.now());
+        final Resignified personNameTo = new ResignifiedJpa(Util.randId(), Instant.now(), Instant.now());
+        final UniquelyIdentifiable person = new UniquelyIdentifiableJpa(Util.randId());
+        final SignifyingJpa entity = new SignifyingJpa(Util.randId(), "The act of signifying something", "Alice", english, person, personNameFrom,
             personNameTo);
 
         em.getTransaction().begin();

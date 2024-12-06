@@ -60,15 +60,15 @@ public class PossibleWorldTest {
 
     @Test
     public void test() {
-        final var from1 = new CreatedJpa("created001", Instant.now(), Instant.now());
-        final var to1 = new DestroyedJpa("destroyed001", Instant.now(), Instant.now());
-        final var from2 = new CreatedJpa("created002", Instant.now(), Instant.now());
-        final var to2 = new DestroyedJpa("destroyed002", Instant.now(), Instant.now());
-        final var item1 = new IndividualJpa("item001", from1, to1);
-        final var item2 = new IndividualJpa("item002", from2, to2);
-        final var beginning = new CreatedJpa("beginning001", Instant.now(), Instant.now());
-        final var ending = new DeletedJpa("ending001", Instant.now(), Instant.now());
-        final var entity = new PossibleWorldJpa("pw001", Set.of(item1, item2), beginning, ending);
+        final var from1 = new CreatedJpa(Util.randId(), Instant.now(), Instant.now());
+        final var to1 = new DestroyedJpa(Util.randId(), Instant.now(), Instant.now());
+        final var from2 = new CreatedJpa(Util.randId(), Instant.now(), Instant.now());
+        final var to2 = new DestroyedJpa(Util.randId(), Instant.now(), Instant.now());
+        final var item1 = new IndividualJpa(Util.randId(), from1, to1);
+        final var item2 = new IndividualJpa(Util.randId(), from2, to2);
+        final var beginning = new CreatedJpa(Util.randId(), Instant.now(), Instant.now());
+        final var ending = new DeletedJpa(Util.randId(), Instant.now(), Instant.now());
+        final var entity = new PossibleWorldJpa(Util.randId(), Set.of(item1, item2), beginning, ending);
 
         em.getTransaction().begin();
         em.persist(entity);

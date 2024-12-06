@@ -59,12 +59,12 @@ public class StateTest {
 
     @Test
     public void test() {
-        final var personFrom = new BirthJpa("born", Instant.now(), Instant.now());
-        final var personTo = new DeathJpa("dies", Instant.now(), Instant.now());
-        final var person = new IndividualJpa("person1", personFrom, personTo);
-        final var stateFrom = new CreatedJpa("created", Instant.now(), Instant.now());
-        final var stateTo = new DestroyedJpa("destroyed", Instant.now(), Instant.now());
-        final var entity = new StateJpa<>("state1", person, stateFrom, stateTo);
+        final var personFrom = new BirthJpa(Util.randId(), Instant.now(), Instant.now());
+        final var personTo = new DeathJpa(Util.randId(), Instant.now(), Instant.now());
+        final var person = new IndividualJpa(Util.randId(), personFrom, personTo);
+        final var stateFrom = new CreatedJpa(Util.randId(), Instant.now(), Instant.now());
+        final var stateTo = new DestroyedJpa(Util.randId(), Instant.now(), Instant.now());
+        final var entity = new StateJpa<>(Util.randId(), person, stateFrom, stateTo);
 
         em.getTransaction().begin();
         em.persist(entity);

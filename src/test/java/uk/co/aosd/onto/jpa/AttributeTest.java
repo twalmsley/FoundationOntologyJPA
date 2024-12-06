@@ -60,10 +60,10 @@ public class AttributeTest {
     public void testAttribute() {
         final Instant to = Instant.now();
         final Instant from = to.minusSeconds(60);
-        final var beginning = new BuiltJpa("built1", from, to);
-        final var ending = new ScrappedJpa("scrapped", from, to);
-        final var ind = new IndividualJpa("ind", beginning, ending);
-        final var entity = new AttributeJpa<>("id", ind, "prop", from, to);
+        final var beginning = new BuiltJpa(Util.randId(), from, to);
+        final var ending = new ScrappedJpa(Util.randId(), from, to);
+        final var ind = new IndividualJpa(Util.randId(), beginning, ending);
+        final var entity = new AttributeJpa<>(Util.randId(), ind, "prop", from, to);
 
         em.getTransaction().begin();
         em.persist(entity);
@@ -82,11 +82,11 @@ public class AttributeTest {
     public void testScalarAttribute() {
         final Instant to = Instant.now();
         final Instant from = to.minusSeconds(60);
-        final var beginning = new BuiltJpa("built021", from, to);
-        final var ending = new ScrappedJpa("scrapped02", from, to);
-        final var ind = new IndividualJpa("ind02", beginning, ending);
+        final var beginning = new BuiltJpa(Util.randId(), from, to);
+        final var ending = new ScrappedJpa(Util.randId(), from, to);
+        final var ind = new IndividualJpa(Util.randId(), beginning, ending);
         final var scalarValue = new ScalarValueJpa<>(1, Units.METERS);
-        final var entity = new ScalarAttributeJpa<>("id02", ind, scalarValue, from, to);
+        final var entity = new ScalarAttributeJpa<>(Util.randId(), ind, scalarValue, from, to);
 
         em.getTransaction().begin();
         em.persist(entity);

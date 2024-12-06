@@ -78,34 +78,34 @@ public class EmploymentTest {
 
     @Test
     public void test() {
-        final Language english = new LanguageJpa("english", "English");
-        final Birth birth = new BirthJpa("birth-1", Instant.now(), Instant.now());
-        final Death death = new DeathJpa("death-1", Instant.now(), Instant.now());
-        final Resignified personNameFrom = new ResignifiedJpa("person-name-from", Instant.now(), Instant.now());
-        final Resignified personNameTo = new ResignifiedJpa("person-name-to", Instant.now(), Instant.now());
-        final Signifier<String> personName1 = new SignifierJpa("person-name-1", "Person Name 1", english, personNameFrom, personNameTo);
-        final Class<Signifier<String>> personNames = new ClassJpa<>("person-names-1", Set.of(personName1));
-        final Class<Language> languages = new ClassJpa<>("languages-1", Set.of(english));
-        final DNA dna = new DNAJpa("dna-1", "ATCG");
-        final Human person = new HumanJpa("person1", birth, death, personNames, english, languages, dna);
+        final Language english = new LanguageJpa(Util.randId(), "English");
+        final Birth birth = new BirthJpa(Util.randId(), Instant.now(), Instant.now());
+        final Death death = new DeathJpa(Util.randId(), Instant.now(), Instant.now());
+        final Resignified personNameFrom = new ResignifiedJpa(Util.randId(), Instant.now(), Instant.now());
+        final Resignified personNameTo = new ResignifiedJpa(Util.randId(), Instant.now(), Instant.now());
+        final Signifier<String> personName1 = new SignifierJpa(Util.randId(), "Person Name 1", english, personNameFrom, personNameTo);
+        final Class<Signifier<String>> personNames = new ClassJpa<>(Util.randId(), Set.of(personName1));
+        final Class<Language> languages = new ClassJpa<>(Util.randId(), Set.of(english));
+        final DNA dna = new DNAJpa(Util.randId(), "ATCG");
+        final Human person = new HumanJpa(Util.randId(), birth, death, personNames, english, languages, dna);
         final Instant from = Instant.now();
         final Instant to = from.plus(10L, ChronoUnit.DAYS);
-        final Appointed appointed = new AppointedJpa("appointed-1", from, from);
-        final Removed removed = new RemovedJpa("removed-1", to, to);
-        final EmployeeRole employeeRole = new EmployeeRole("employee-role-1", "Data Modeller", "Models Data");
-        final Membership<EmployeeRole> membership1 = new MembershipJpa<>("membership-1", person, employeeRole, appointed, removed);
-        final Class<Membership<EmployeeRole>> members = new ClassJpa<>("members-1", Set.of(membership1));
-        final Class<Organisation> units = new ClassJpa<>("units-1", Set.of());
-        final Formed beginning = new FormedJpa("formed-1", Instant.now(), Instant.now());
-        final Dissolved ending = new DissolvedJpa("dissolved-1", Instant.now(), Instant.now());
-        final Resignified namedFrom = new ResignifiedJpa("namedFrom", Instant.now(), Instant.now());
-        final Resignified namedTo = new ResignifiedJpa("namedTo", Instant.now(), Instant.now());
-        final Signifier<String> name1 = new SignifierJpa("name1", "Name 1", english, namedFrom, namedTo);
-        final Class<Signifier<String>> names = new ClassJpa<>("names1", Set.of(name1));
-        final Organisation org = new OrganisationJpa<EmployeeRole>("org-1", members, "To make money", units, names, beginning, ending);
+        final Appointed appointed = new AppointedJpa(Util.randId(), from, from);
+        final Removed removed = new RemovedJpa(Util.randId(), to, to);
+        final EmployeeRole employeeRole = new EmployeeRole(Util.randId(), "Data Modeller", "Models Data");
+        final Membership<EmployeeRole> membership1 = new MembershipJpa<>(Util.randId(), person, employeeRole, appointed, removed);
+        final Class<Membership<EmployeeRole>> members = new ClassJpa<>(Util.randId(), Set.of(membership1));
+        final Class<Organisation> units = new ClassJpa<>(Util.randId(), Set.of());
+        final Formed beginning = new FormedJpa(Util.randId(), Instant.now(), Instant.now());
+        final Dissolved ending = new DissolvedJpa(Util.randId(), Instant.now(), Instant.now());
+        final Resignified namedFrom = new ResignifiedJpa(Util.randId(), Instant.now(), Instant.now());
+        final Resignified namedTo = new ResignifiedJpa(Util.randId(), Instant.now(), Instant.now());
+        final Signifier<String> name1 = new SignifierJpa(Util.randId(), "Name 1", english, namedFrom, namedTo);
+        final Class<Signifier<String>> names = new ClassJpa<>(Util.randId(), Set.of(name1));
+        final Organisation org = new OrganisationJpa<EmployeeRole>(Util.randId(), members, "To make money", units, names, beginning, ending);
 
         final var entity = new EmploymentJpa(
-            "employment-1",
+            Util.randId(),
             org,
             person,
             "Data Modeller",

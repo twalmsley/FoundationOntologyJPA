@@ -62,11 +62,11 @@ public class ScalarPropertyTest {
     public void test() {
         final Instant to = Instant.now();
         final Instant from = to.minusSeconds(60);
-        final var beginning = new BuiltJpa("built031", from, to);
-        final var ending = new ScrappedJpa("scrapped03", from, to);
-        final var ind = new IndividualJpa("ind03", beginning, ending);
+        final var beginning = new BuiltJpa(Util.randId(), from, to);
+        final var ending = new ScrappedJpa(Util.randId(), from, to);
+        final var ind = new IndividualJpa(Util.randId(), beginning, ending);
         final var scalarValue = new ScalarValueJpa<>(1, Units.METERS);
-        final var entity = new ScalarPropertyJpa<>("id03", scalarValue, Set.of(ind));
+        final var entity = new ScalarPropertyJpa<>(Util.randId(), scalarValue, Set.of(ind));
 
         em.getTransaction().begin();
         em.persist(entity);

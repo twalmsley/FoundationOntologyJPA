@@ -61,15 +61,15 @@ public class OwningTest {
 
     @Test
     public void test() {
-        final var from1 = new CreatedJpa("created1", Instant.now(), Instant.now());
-        final var to1 = new DestroyedJpa("destroyed1", Instant.now(), Instant.now());
-        final var from2 = new CreatedJpa("created2", Instant.now(), Instant.now());
-        final var to2 = new DestroyedJpa("destroyed2", Instant.now(), Instant.now());
-        final var owner = new IndividualJpa("owner1", from1, to1);
-        final var owned = new IndividualJpa("owned1", from2, to2);
-        final TransferredFrom beginning = new TransferredFromJpa("beginning1", Instant.now(), Instant.now());
-        final TransferredTo ending = new TransferredToJpa("ending1", Instant.now(), Instant.now());
-        final var entity = new OwningJpa<>("owning1", "Owning Something", owner, owned, beginning, ending);
+        final var from1 = new CreatedJpa(Util.randId(), Instant.now(), Instant.now());
+        final var to1 = new DestroyedJpa(Util.randId(), Instant.now(), Instant.now());
+        final var from2 = new CreatedJpa(Util.randId(), Instant.now(), Instant.now());
+        final var to2 = new DestroyedJpa(Util.randId(), Instant.now(), Instant.now());
+        final var owner = new IndividualJpa(Util.randId(), from1, to1);
+        final var owned = new IndividualJpa(Util.randId(), from2, to2);
+        final TransferredFrom beginning = new TransferredFromJpa(Util.randId(), Instant.now(), Instant.now());
+        final TransferredTo ending = new TransferredToJpa(Util.randId(), Instant.now(), Instant.now());
+        final var entity = new OwningJpa<>(Util.randId(), "Owning Something", owner, owned, beginning, ending);
 
         em.getTransaction().begin();
         em.persist(entity);

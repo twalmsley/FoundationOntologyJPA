@@ -53,7 +53,7 @@ public class CurrencyTest {
 
     @Test
     public void test() {
-        final var entity = new CurrencyJpa("currency1", "USD", "US Dollar", '$');
+        final var entity = new CurrencyJpa(Util.randId(), "USD", "US Dollar", '$');
 
         em.getTransaction().begin();
         em.persist(entity);

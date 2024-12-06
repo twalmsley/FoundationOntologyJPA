@@ -57,9 +57,9 @@ public class ClassTest {
     @Test
     public void test() {
 
-        final UniquelyIdentifiableJpa e1 = new UniquelyIdentifiableJpa("id1");
-        final UniquelyIdentifiableJpa e2 = new UniquelyIdentifiableJpa("id2");
-        final var entity = new ClassJpa<UniquelyIdentifiableJpa>("class1", Set.of(e1, e2));
+        final UniquelyIdentifiableJpa e1 = new UniquelyIdentifiableJpa(Util.randId());
+        final UniquelyIdentifiableJpa e2 = new UniquelyIdentifiableJpa(Util.randId());
+        final var entity = new ClassJpa<UniquelyIdentifiableJpa>(Util.randId(), Set.of(e1, e2));
 
         em.getTransaction().begin();
         em.persist(entity);

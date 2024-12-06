@@ -59,13 +59,13 @@ public class PropertyTest {
 
     @Test
     public void test() {
-        final var from1 = new CreatedJpa("created011", Instant.now(), Instant.now());
-        final var to1 = new DestroyedJpa("destroyed011", Instant.now(), Instant.now());
-        final var from2 = new CreatedJpa("created012", Instant.now(), Instant.now());
-        final var to2 = new DestroyedJpa("destroyed012", Instant.now(), Instant.now());
-        final var item1 = new IndividualJpa("item011", from1, to1);
-        final var item2 = new IndividualJpa("item012", from2, to2);
-        final var entity = new PropertyJpa<>("pw011", Set.of(item1, item2), "Has this property");
+        final var from1 = new CreatedJpa(Util.randId(), Instant.now(), Instant.now());
+        final var to1 = new DestroyedJpa(Util.randId(), Instant.now(), Instant.now());
+        final var from2 = new CreatedJpa(Util.randId(), Instant.now(), Instant.now());
+        final var to2 = new DestroyedJpa(Util.randId(), Instant.now(), Instant.now());
+        final var item1 = new IndividualJpa(Util.randId(), from1, to1);
+        final var item2 = new IndividualJpa(Util.randId(), from2, to2);
+        final var entity = new PropertyJpa<>(Util.randId(), Set.of(item1, item2), "Has this property");
 
         em.getTransaction().begin();
         em.persist(entity);
