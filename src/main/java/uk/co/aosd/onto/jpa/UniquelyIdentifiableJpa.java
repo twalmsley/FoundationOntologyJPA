@@ -11,6 +11,8 @@ import uk.co.aosd.onto.foundation.UniquelyIdentifiable;
 
 /**
  * An implementation of UniquelyIdentifiable.
+ *
+ * @author Tony Walmsley
  */
 @Entity
 @Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)

@@ -20,6 +20,8 @@ import uk.co.aosd.onto.signifying.Signifier;
 
 /**
  * Test persistence for SignifierJpa.
+ *
+ * @author Tony Walmsley
  */
 public class SignifierTest {
     private static EntityManagerFactory emf;

@@ -25,6 +25,8 @@ import uk.co.aosd.onto.jpa.events.ScrappedJpa;
 
 /**
  * Test persistence for Agglomerates.
+ *
+ * @author Tony Walmsley
  */
 public class AgglomerateTest {
     private static EntityManagerFactory emf;

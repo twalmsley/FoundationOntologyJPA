@@ -12,6 +12,8 @@ import jakarta.persistence.Converter;
 
 /**
  * A converter for serializable objects.
+ *
+ * @author Tony Walmsley
  */
 @Converter
 public class SerializableConverter implements AttributeConverter<Serializable, byte[]> {

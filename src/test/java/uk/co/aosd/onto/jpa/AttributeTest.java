@@ -19,6 +19,8 @@ import uk.co.aosd.onto.units.Units;
 
 /**
  * Test persistence for Attributes.
+ *
+ * @author Tony Walmsley
  */
 public class AttributeTest {
     private static EntityManagerFactory emf;

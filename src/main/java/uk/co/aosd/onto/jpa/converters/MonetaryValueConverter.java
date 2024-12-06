@@ -6,6 +6,8 @@ import uk.co.aosd.onto.jpa.MonetaryValueJpa;
 
 /**
  * Converts a currency to a string and back again.
+ *
+ * @author Tony Walmsley
  */
 @Converter
 public class MonetaryValueConverter implements AttributeConverter<MonetaryValueJpa<?>, String> {

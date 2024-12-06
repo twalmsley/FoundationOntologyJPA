@@ -5,6 +5,8 @@ import jakarta.persistence.Converter;
 
 /**
  * Converts a Class to a String.
+ *
+ * @author Tony Walmsley
  */
 @Converter
 public class ClassConverter implements AttributeConverter<Class<?>, String> {

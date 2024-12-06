@@ -22,6 +22,8 @@ import uk.co.aosd.onto.jpa.events.TransferredToJpa;
 
 /**
  * Persistence test for OwningJpa.
+ *
+ * @author Tony Walmsley
  */
 public class OwningTest {
     private static EntityManagerFactory emf;

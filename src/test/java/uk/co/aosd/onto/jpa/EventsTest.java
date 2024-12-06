@@ -43,6 +43,8 @@ import uk.co.aosd.onto.jpa.events.TransferredToJpa;
 
 /**
  * Test persistence for Events subtypes.
+ *
+ * @author Tony Walmsley
  */
 public class EventsTest {
     private static EntityManagerFactory emf;

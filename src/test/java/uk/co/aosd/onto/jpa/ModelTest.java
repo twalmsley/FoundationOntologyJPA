@@ -41,6 +41,8 @@ import uk.co.aosd.onto.signifying.Signifier;
 
 /**
  * Test ModelJpa persistence.
+ *
+ * @author Tony Walmsley
  */
 public class ModelTest {
     private static EntityManagerFactory emf;

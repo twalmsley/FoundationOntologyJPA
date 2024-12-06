@@ -21,6 +21,8 @@ import uk.co.aosd.onto.jpa.events.DestroyedJpa;
 
 /**
  * Persistence tests for the PossibleWorldJpa class.
+ *
+ * @author Tony Walmsley
  */
 public class PossibleWorldTest {
     private static EntityManagerFactory emf;

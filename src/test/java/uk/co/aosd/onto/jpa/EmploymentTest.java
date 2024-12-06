@@ -39,6 +39,8 @@ import uk.co.aosd.onto.signifying.Signifier;
 
 /**
  * Persistence test for EmploymentJpa.
+ *
+ * @author Tony Walmsley
  */
 public class EmploymentTest {
     private static EntityManagerFactory emf;

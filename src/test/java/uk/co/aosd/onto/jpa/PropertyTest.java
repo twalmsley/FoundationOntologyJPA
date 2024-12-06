@@ -20,6 +20,8 @@ import uk.co.aosd.onto.jpa.events.DestroyedJpa;
 
 /**
  * Persistence tests for the PropertyJpa class.
+ *
+ * @author Tony Walmsley
  */
 public class PropertyTest {
     private static EntityManagerFactory emf;

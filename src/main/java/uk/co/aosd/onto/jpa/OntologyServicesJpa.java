@@ -166,7 +166,7 @@ public class OntologyServicesJpa implements OntologyServices {
         return new ScalarValueJpa<N, U>(value, unit);
     }
 
-    private static String randId() {
+    public static String randId() {
         return UUID.randomUUID().toString();
     }
 }

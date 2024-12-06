@@ -14,6 +14,8 @@ import org.junit.jupiter.api.Test;
 
 /**
  * Persistence test for DNAJpa.
+ *
+ * @author Tony Walmsley
  */
 public class DNATest {
     private static EntityManagerFactory emf;

@@ -14,6 +14,8 @@ import org.junit.jupiter.api.Test;
 
 /**
  * Test for CurrencyJpa.
+ *
+ * @author Tony Walmsley
  */
 public class CurrencyTest {
     private static EntityManagerFactory emf;

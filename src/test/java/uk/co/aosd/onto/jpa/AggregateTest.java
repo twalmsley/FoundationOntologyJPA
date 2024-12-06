@@ -19,6 +19,8 @@ import uk.co.aosd.onto.units.Units;
 
 /**
  * Test persistence for Aggregates.
+ *
+ * @author Tony Walmsley
  */
 public class AggregateTest {
     private static EntityManagerFactory emf;

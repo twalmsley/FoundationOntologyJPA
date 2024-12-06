@@ -12,6 +12,8 @@ import uk.co.aosd.onto.jpa.events.EventJpa;
 
 /**
  * An implementation of the Individual interface.
+ *
+ * @author Tony Walmsley
  */
 @Entity
 @Data

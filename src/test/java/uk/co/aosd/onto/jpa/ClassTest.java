@@ -17,6 +17,8 @@ import org.junit.jupiter.api.Test;
 
 /**
  * Tests for ClassJpa.
+ *
+ * @author Tony Walmsley
  */
 public class ClassTest {
     private static EntityManagerFactory emf;

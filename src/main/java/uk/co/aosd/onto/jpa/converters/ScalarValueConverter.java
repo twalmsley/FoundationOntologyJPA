@@ -6,6 +6,8 @@ import uk.co.aosd.onto.jpa.ScalarValueJpa;
 
 /**
  * Converts a scalar value to a string.
+ *
+ * @author Tony Walmsley
  */
 @Converter
 public class ScalarValueConverter implements AttributeConverter<ScalarValueJpa<?, ?>, String> {

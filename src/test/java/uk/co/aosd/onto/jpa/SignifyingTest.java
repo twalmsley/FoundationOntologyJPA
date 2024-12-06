@@ -2,10 +2,8 @@ package uk.co.aosd.onto.jpa;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
-import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.time.Instant;
-import java.util.Set;
 
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityManagerFactory;
@@ -15,16 +13,17 @@ import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import uk.co.aosd.onto.jpa.events.BuiltJpa;
-import uk.co.aosd.onto.jpa.events.ScrappedJpa;
-import uk.co.aosd.onto.units.Units;
+import uk.co.aosd.onto.events.Resignified;
+import uk.co.aosd.onto.foundation.UniquelyIdentifiable;
+import uk.co.aosd.onto.jpa.events.ResignifiedJpa;
+import uk.co.aosd.onto.language.Language;
 
 /**
- * Test persistence for ScalarPropertyJpa.
+ * Test the SignifyingJpa class.
  *
  * @author Tony Walmsley
  */
-public class ScalarPropertyTest {
+public class SignifyingTest {
     private static EntityManagerFactory emf;
     private EntityManager em;
 
@@ -60,22 +59,24 @@ public class ScalarPropertyTest {
 
     @Test
     public void test() {
-        final Instant to = Instant.now();
-        final Instant from = to.minusSeconds(60);
-        final var beginning = new BuiltJpa("built031", from, to);
-        final var ending = new ScrappedJpa("scrapped03", from, to);
-        final var ind = new IndividualJpa("ind03", beginning, ending);
-        final var scalarValue = new ScalarValueJpa<>(1, Units.METERS);
-        final var entity = new ScalarPropertyJpa<>("id03", scalarValue, Set.of(ind));
+        final Language english = new LanguageJpa("english", "English");
+        final Resignified personNameFrom = new ResignifiedJpa("person-name-from1", Instant.now(), Instant.now());
+        final Resignified personNameTo = new ResignifiedJpa("person-name-to1", Instant.now(), Instant.now());
+        final UniquelyIdentifiable person = new UniquelyIdentifiableJpa("person1");
+        final SignifyingJpa entity = new SignifyingJpa("sig1", "The act of signifying something", "Alice", english, person, personNameFrom,
+            personNameTo);
 
         em.getTransaction().begin();
         em.persist(entity);
         em.getTransaction().commit();
 
-        final var found = em.find(ScalarPropertyJpa.class, entity.getIdentifier());
+        final var found = em.find(SignifyingJpa.class, entity.getIdentifier());
         assertNotNull(found);
         assertEquals(entity.getIdentifier(), found.getIdentifier());
-        assertTrue(entity.getMembers().contains(ind));
-        assertEquals(entity.getProperty(), found.getProperty());
+        assertEquals(entity.getLanguage(), found.getLanguage());
+        assertEquals(entity.getName(), found.getName());
+        assertEquals(entity.getNamed(), found.getNamed());
+        assertEquals(entity.getBeginning(), found.getBeginning());
+        assertEquals(entity.getEnding(), found.getEnding());
     }
 }
