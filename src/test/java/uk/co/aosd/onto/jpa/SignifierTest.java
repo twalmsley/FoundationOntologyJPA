@@ -57,7 +57,7 @@ public class SignifierTest {
 
     @Test
     public void test() {
-        final Language english = new LanguageJpa("french", "French");
+        final Language english = new LanguageJpa("english", "English");
         final Resignified personNameFrom = new ResignifiedJpa("person-name-from1", Instant.now(), Instant.now());
         final Resignified personNameTo = new ResignifiedJpa("person-name-to1", Instant.now(), Instant.now());
         final Signifier<String> entity = new SignifierJpa("person-name-01", "Person Name 01", english, personNameFrom, personNameTo);
