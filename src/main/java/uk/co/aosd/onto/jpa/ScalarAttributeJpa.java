@@ -2,7 +2,6 @@ package uk.co.aosd.onto.jpa;
 
 import java.time.Instant;
 
-import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Convert;
 import jakarta.persistence.Entity;
@@ -30,7 +29,7 @@ import uk.co.aosd.onto.jpa.converters.ScalarValueConverter;
 public class ScalarAttributeJpa<I extends Individual<? extends Event, ? extends Event>, N extends Number, U extends Unit> extends UniquelyIdentifiableJpa
     implements ScalarAttribute<I, N, U> {
 
-    @ManyToOne(targetEntity = IndividualJpa.class, cascade = { CascadeType.PERSIST, CascadeType.MERGE })
+    @ManyToOne(targetEntity = IndividualJpa.class)
     private I individual;
 
     @Convert(converter = ScalarValueConverter.class)

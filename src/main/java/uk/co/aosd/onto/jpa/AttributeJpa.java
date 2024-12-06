@@ -3,7 +3,6 @@ package uk.co.aosd.onto.jpa;
 import java.io.Serializable;
 import java.time.Instant;
 
-import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Convert;
 import jakarta.persistence.Entity;
@@ -29,7 +28,7 @@ import uk.co.aosd.onto.jpa.converters.SerializableConverter;
 public class AttributeJpa<I extends Individual<? extends Event, ? extends Event>, P extends Serializable> extends UniquelyIdentifiableJpa
     implements Attribute<I, P> {
 
-    @ManyToOne(targetEntity = IndividualJpa.class, cascade = { CascadeType.PERSIST, CascadeType.MERGE })
+    @ManyToOne(targetEntity = IndividualJpa.class)
     private I individual;
 
     @Convert(converter = SerializableConverter.class)

@@ -115,6 +115,28 @@ public class EmploymentTest {
 
         em.getTransaction().begin();
         em.persist(english);
+        em.persist(birth);
+        em.persist(death);
+        em.persist(personNameFrom);
+        em.persist(personNameTo);
+        em.persist(personName1);
+        em.persist(personNames);
+        em.persist(languages);
+        em.persist(dna);
+        em.persist(person);
+        em.persist(appointed);
+        em.persist(removed);
+        em.persist(employeeRole);
+        em.persist(membership1);
+        em.persist(members);
+        em.persist(units);
+        em.persist(beginning);
+        em.persist(ending);
+        em.persist(namedFrom);
+        em.persist(namedTo);
+        em.persist(name1);
+        em.persist(names);
+        em.persist(org);
         em.persist(entity);
         em.getTransaction().commit();
 

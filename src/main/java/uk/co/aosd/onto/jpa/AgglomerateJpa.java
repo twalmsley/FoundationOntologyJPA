@@ -2,7 +2,6 @@ package uk.co.aosd.onto.jpa;
 
 import java.util.Set;
 
-import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.OneToMany;
@@ -29,14 +28,14 @@ import uk.co.aosd.onto.jpa.events.DisaggregatedJpa;
 @EqualsAndHashCode(callSuper = true)
 public class AgglomerateJpa extends UniquelyIdentifiableJpa implements Agglomerate {
 
-    @OneToMany(cascade = CascadeType.ALL)
+    @OneToMany
     @Column(name = "PARTS")
     private Set<IndividualJpa> parts;
 
-    @OneToOne(cascade = CascadeType.ALL, targetEntity = AggregatedJpa.class)
+    @OneToOne(targetEntity = AggregatedJpa.class)
     private Aggregated beginning;
 
-    @OneToOne(cascade = CascadeType.ALL, targetEntity = DisaggregatedJpa.class)
+    @OneToOne(targetEntity = DisaggregatedJpa.class)
     private Disaggregated ending;
 
     /**

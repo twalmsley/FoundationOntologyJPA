@@ -2,7 +2,6 @@ package uk.co.aosd.onto.jpa;
 
 import java.util.Set;
 
-import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.OneToOne;
@@ -28,13 +27,13 @@ import uk.co.aosd.onto.jpa.events.DeletedJpa;
 @EqualsAndHashCode(callSuper = true)
 public class PossibleWorldJpa extends UniquelyIdentifiableJpa implements PossibleWorld {
 
-    @OneToMany(targetEntity = IndividualJpa.class, cascade = { CascadeType.ALL })
+    @OneToMany(targetEntity = IndividualJpa.class)
     private Set<Individual<? extends Event, ? extends Event>> parts;
 
-    @OneToOne(targetEntity = CreatedJpa.class, cascade = { CascadeType.ALL })
+    @OneToOne(targetEntity = CreatedJpa.class)
     private Created beginning;
 
-    @OneToOne(targetEntity = DeletedJpa.class, cascade = { CascadeType.ALL })
+    @OneToOne(targetEntity = DeletedJpa.class)
     private Deleted ending;
 
     /**

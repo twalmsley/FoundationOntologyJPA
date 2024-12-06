@@ -1,6 +1,5 @@
 package uk.co.aosd.onto.jpa;
 
-import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.ManyToOne;
@@ -27,10 +26,10 @@ import uk.co.aosd.onto.organisation.Organisation;
 @EqualsAndHashCode(callSuper = true)
 public class EmploymentJpa extends UniquelyIdentifiableJpa implements Employment<String> {
 
-    @ManyToOne(targetEntity = OrganisationJpa.class, cascade = { CascadeType.PERSIST, CascadeType.MERGE })
+    @ManyToOne(targetEntity = OrganisationJpa.class)
     private Organisation employer;
 
-    @ManyToOne(targetEntity = HumanJpa.class, cascade = { CascadeType.PERSIST, CascadeType.MERGE })
+    @ManyToOne(targetEntity = HumanJpa.class)
     private Human employee;
 
     @Column(name = "DESCRIPTION", nullable = false, updatable = true, columnDefinition = "LONGTEXT")
@@ -39,10 +38,10 @@ public class EmploymentJpa extends UniquelyIdentifiableJpa implements Employment
     @Column(name = "CONTRACT", nullable = false, updatable = true, columnDefinition = "LONGTEXT")
     private String contract;
 
-    @OneToOne(targetEntity = AppointedJpa.class, cascade = { CascadeType.ALL })
+    @OneToOne(targetEntity = AppointedJpa.class)
     private Appointed beginning;
 
-    @OneToOne(targetEntity = RemovedJpa.class, cascade = { CascadeType.ALL })
+    @OneToOne(targetEntity = RemovedJpa.class)
     private Removed ending;
 
     /**

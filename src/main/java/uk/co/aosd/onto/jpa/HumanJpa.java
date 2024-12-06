@@ -1,6 +1,5 @@
 package uk.co.aosd.onto.jpa;
 
-import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToOne;
@@ -27,22 +26,22 @@ import uk.co.aosd.onto.signifying.Signifier;
 @NoArgsConstructor
 @EqualsAndHashCode(callSuper = true)
 public class HumanJpa extends UniquelyIdentifiableJpa implements Human {
-    @OneToOne(targetEntity = BirthJpa.class, cascade = { CascadeType.ALL })
+    @OneToOne(targetEntity = BirthJpa.class)
     private Birth beginning;
 
-    @OneToOne(targetEntity = DeathJpa.class, cascade = { CascadeType.ALL })
+    @OneToOne(targetEntity = DeathJpa.class)
     private Death ending;
 
-    @OneToOne(targetEntity = ClassJpa.class, cascade = { CascadeType.ALL })
+    @OneToOne(targetEntity = ClassJpa.class)
     private Class<Signifier<String>> names;
 
-    @ManyToOne(targetEntity = LanguageJpa.class, cascade = { CascadeType.PERSIST, CascadeType.MERGE })
+    @ManyToOne(targetEntity = LanguageJpa.class)
     private Language nativeLanguage;
 
-    @OneToOne(targetEntity = ClassJpa.class, cascade = { CascadeType.PERSIST, CascadeType.MERGE })
+    @OneToOne(targetEntity = ClassJpa.class)
     private Class<Language> languages;
 
-    @OneToOne(targetEntity = DNAJpa.class, cascade = { CascadeType.ALL })
+    @OneToOne(targetEntity = DNAJpa.class)
     private DNA dna;
 
     /**

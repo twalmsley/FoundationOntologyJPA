@@ -1,6 +1,5 @@
 package uk.co.aosd.onto.jpa;
 
-import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Convert;
 import jakarta.persistence.Entity;
@@ -44,10 +43,10 @@ public class AggregateJpa<N extends Number, U extends Unit, T> implements Aggreg
     @Target(ScalarValue.class)
     private ScalarValue<N, U> quantity;
 
-    @OneToOne(cascade = CascadeType.ALL, targetEntity = AggregatedJpa.class)
+    @OneToOne(targetEntity = AggregatedJpa.class)
     private Aggregated beginning;
 
-    @OneToOne(cascade = CascadeType.ALL, targetEntity = DisaggregatedJpa.class)
+    @OneToOne(targetEntity = DisaggregatedJpa.class)
     private Disaggregated ending;
 
 }

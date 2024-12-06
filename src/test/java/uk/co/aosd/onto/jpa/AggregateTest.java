@@ -68,6 +68,8 @@ public class AggregateTest {
             new DisaggregatedJpa(Util.randId(), aggTo, aggTo));
 
         em.getTransaction().begin();
+        em.persist(entity.getBeginning());
+        em.persist(entity.getEnding());
         em.persist(entity);
         em.getTransaction().commit();
 

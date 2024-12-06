@@ -65,6 +65,9 @@ public class SignifierTest {
         final Signifier<String> entity = new SignifierJpa(Util.randId(), "Person Name 01", english, personNameFrom, personNameTo);
 
         em.getTransaction().begin();
+        em.persist(english);
+        em.persist(personNameFrom);
+        em.persist(personNameTo);
         em.persist(entity);
         em.getTransaction().commit();
 

@@ -83,6 +83,25 @@ public class TransferringOfOwnershipTest {
         final var entity = svc.transferOwnership(Util.randId(), "Transferring ownership", current, nextOwner, txferFrom, txFerTo);
 
         em.getTransaction().begin();
+        em.persist(ownerBorn);
+        em.persist(ownerDied);
+        em.persist(owner);
+        em.persist(ownedCreated);
+        em.persist(ownedDestroyed);
+        em.persist(owned);
+        em.persist(own1From);
+        em.persist(own1To);
+        em.persist(current);
+        em.persist(nextOwnerBorn);
+        em.persist(nextOwnerDied);
+        em.persist(nextOwner);
+        em.persist(txferFrom);
+        em.persist(txFerTo);
+        em.persist(entity.getBeginning());
+        em.persist(entity.getEnding());
+        em.persist(entity.getTo());
+        em.persist(entity.getTo().getBeginning());
+        em.persist(entity.getTo().getEnding());
         em.persist(entity);
         em.getTransaction().commit();
 

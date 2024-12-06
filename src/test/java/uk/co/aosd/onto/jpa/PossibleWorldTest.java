@@ -71,6 +71,14 @@ public class PossibleWorldTest {
         final var entity = new PossibleWorldJpa(Util.randId(), Set.of(item1, item2), beginning, ending);
 
         em.getTransaction().begin();
+        em.persist(from1);
+        em.persist(to1);
+        em.persist(from2);
+        em.persist(to2);
+        em.persist(beginning);
+        em.persist(ending);
+        em.persist(item1);
+        em.persist(item2);
         em.persist(entity);
         em.getTransaction().commit();
 

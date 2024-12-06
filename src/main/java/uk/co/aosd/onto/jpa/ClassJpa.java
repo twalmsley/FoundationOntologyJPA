@@ -2,7 +2,6 @@ package uk.co.aosd.onto.jpa;
 
 import java.util.Set;
 
-import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.OneToMany;
 import lombok.Data;
@@ -22,7 +21,7 @@ import uk.co.aosd.onto.foundation.UniquelyIdentifiable;
 @EqualsAndHashCode(callSuper = true)
 public class ClassJpa<T extends UniquelyIdentifiable> extends UniquelyIdentifiableJpa implements Class<T> {
 
-    @OneToMany(targetEntity = UniquelyIdentifiableJpa.class, cascade = CascadeType.ALL)
+    @OneToMany(targetEntity = UniquelyIdentifiableJpa.class)
     private Set<T> members;
 
     public ClassJpa(final String identifier, final Set<T> members) {

@@ -1,6 +1,5 @@
 package uk.co.aosd.onto.jpa;
 
-import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.ManyToOne;
@@ -27,13 +26,13 @@ public class SignifierJpa extends UniquelyIdentifiableJpa implements Signifier<S
     @Column(name = "NAME", nullable = false, updatable = true, columnDefinition = "LONGTEXT")
     private String name;
 
-    @ManyToOne(targetEntity = LanguageJpa.class, cascade = { CascadeType.PERSIST, CascadeType.MERGE })
+    @ManyToOne(targetEntity = LanguageJpa.class)
     private Language language;
 
-    @OneToOne(targetEntity = ResignifiedJpa.class, cascade = { CascadeType.ALL })
+    @OneToOne(targetEntity = ResignifiedJpa.class)
     private Resignified beginning;
 
-    @OneToOne(targetEntity = ResignifiedJpa.class, cascade = { CascadeType.ALL })
+    @OneToOne(targetEntity = ResignifiedJpa.class)
     private Resignified ending;
 
     /**

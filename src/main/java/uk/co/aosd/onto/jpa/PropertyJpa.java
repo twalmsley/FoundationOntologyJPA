@@ -3,7 +3,6 @@ package uk.co.aosd.onto.jpa;
 import java.io.Serializable;
 import java.util.Set;
 
-import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Convert;
 import jakarta.persistence.Entity;
@@ -27,7 +26,7 @@ import uk.co.aosd.onto.jpa.converters.SerializableConverter;
 @EqualsAndHashCode(callSuper = true)
 public class PropertyJpa<T extends UniquelyIdentifiable, U extends Serializable> extends UniquelyIdentifiableJpa implements Property<T, U> {
 
-    @OneToMany(targetEntity = UniquelyIdentifiableJpa.class, cascade = { CascadeType.PERSIST, CascadeType.MERGE })
+    @OneToMany(targetEntity = UniquelyIdentifiableJpa.class)
     private Set<T> members;
 
     @Convert(converter = SerializableConverter.class)

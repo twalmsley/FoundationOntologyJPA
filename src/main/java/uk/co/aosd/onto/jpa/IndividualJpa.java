@@ -1,6 +1,5 @@
 package uk.co.aosd.onto.jpa;
 
-import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.OneToOne;
 import lombok.Data;
@@ -20,10 +19,10 @@ import uk.co.aosd.onto.jpa.events.EventJpa;
 @NoArgsConstructor
 @EqualsAndHashCode(callSuper = true)
 public class IndividualJpa extends UniquelyIdentifiableJpa implements Individual<Event, Event> {
-    @OneToOne(targetEntity = EventJpa.class, cascade = { CascadeType.ALL })
+    @OneToOne(targetEntity = EventJpa.class)
     private EventJpa beginning;
 
-    @OneToOne(targetEntity = EventJpa.class, cascade = { CascadeType.ALL })
+    @OneToOne(targetEntity = EventJpa.class)
     private EventJpa ending;
 
     /**

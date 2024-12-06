@@ -67,6 +67,10 @@ public class SignifyingTest {
             personNameTo);
 
         em.getTransaction().begin();
+        em.persist(english);
+        em.persist(personNameFrom);
+        em.persist(personNameTo);
+        em.persist(person);
         em.persist(entity);
         em.getTransaction().commit();
 

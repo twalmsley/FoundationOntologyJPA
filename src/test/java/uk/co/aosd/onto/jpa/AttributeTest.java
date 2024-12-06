@@ -66,6 +66,9 @@ public class AttributeTest {
         final var entity = new AttributeJpa<>(Util.randId(), ind, "prop", from, to);
 
         em.getTransaction().begin();
+        em.persist(beginning);
+        em.persist(ending);
+        em.persist(ind);
         em.persist(entity);
         em.getTransaction().commit();
 
@@ -89,6 +92,9 @@ public class AttributeTest {
         final var entity = new ScalarAttributeJpa<>(Util.randId(), ind, scalarValue, from, to);
 
         em.getTransaction().begin();
+        em.persist(beginning);
+        em.persist(ending);
+        em.persist(ind);
         em.persist(entity);
         em.getTransaction().commit();
 

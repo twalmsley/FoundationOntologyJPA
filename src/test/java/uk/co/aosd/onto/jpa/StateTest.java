@@ -67,6 +67,11 @@ public class StateTest {
         final var entity = new StateJpa<>(Util.randId(), person, stateFrom, stateTo);
 
         em.getTransaction().begin();
+        em.persist(personFrom);
+        em.persist(personTo);
+        em.persist(stateFrom);
+        em.persist(stateTo);
+        em.persist(person);
         em.persist(entity);
         em.getTransaction().commit();
 

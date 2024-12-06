@@ -1,6 +1,5 @@
 package uk.co.aosd.onto.jpa;
 
-import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.OneToOne;
@@ -27,22 +26,22 @@ import uk.co.aosd.onto.signifying.Signifier;
 @NoArgsConstructor
 @EqualsAndHashCode(callSuper = true)
 public class OrganisationJpa<R extends Role> extends UniquelyIdentifiableJpa implements Organisation {
-    @OneToOne(targetEntity = ClassJpa.class, cascade = { CascadeType.ALL })
+    @OneToOne(targetEntity = ClassJpa.class)
     private Class<Membership<R>> members;
 
     @Column(name = "PURPOSE", nullable = false, updatable = true, columnDefinition = "LONGTEXT")
     private String purpose;
 
-    @OneToOne(targetEntity = ClassJpa.class, cascade = { CascadeType.ALL })
+    @OneToOne(targetEntity = ClassJpa.class)
     private Class<Organisation> units;
 
-    @OneToOne(targetEntity = ClassJpa.class, cascade = { CascadeType.ALL })
+    @OneToOne(targetEntity = ClassJpa.class)
     private Class<Signifier<String>> names;
 
-    @OneToOne(targetEntity = FormedJpa.class, cascade = { CascadeType.ALL })
+    @OneToOne(targetEntity = FormedJpa.class)
     private Formed beginning;
 
-    @OneToOne(targetEntity = DissolvedJpa.class, cascade = { CascadeType.ALL })
+    @OneToOne(targetEntity = DissolvedJpa.class)
     private Dissolved ending;
 
     /**

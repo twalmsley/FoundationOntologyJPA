@@ -72,6 +72,14 @@ public class OwningTest {
         final var entity = new OwningJpa<>(Util.randId(), "Owning Something", owner, owned, beginning, ending);
 
         em.getTransaction().begin();
+        em.persist(from1);
+        em.persist(to1);
+        em.persist(from2);
+        em.persist(to2);
+        em.persist(owner);
+        em.persist(owned);
+        em.persist(beginning);
+        em.persist(ending);
         em.persist(entity);
         em.getTransaction().commit();
 

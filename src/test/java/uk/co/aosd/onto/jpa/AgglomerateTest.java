@@ -76,6 +76,14 @@ public class AgglomerateTest {
         final Set<IndividualJpa> parts = Set.of(handle, head);
         final var entity = new AgglomerateJpa(Util.randId(), parts, beginning, ending);
         em.getTransaction().begin();
+        em.persist(handleCreated);
+        em.persist(handleDestroyed);
+        em.persist(headBuilt);
+        em.persist(headScrapped);
+        em.persist(beginning);
+        em.persist(ending);
+        em.persist(handle);
+        em.persist(head);
         em.persist(entity);
         em.getTransaction().commit();
 

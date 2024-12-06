@@ -1,6 +1,5 @@
 package uk.co.aosd.onto.jpa;
 
-import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToOne;
@@ -23,13 +22,13 @@ import uk.co.aosd.onto.jpa.events.EventJpa;
 @EqualsAndHashCode(callSuper = true)
 public class StateJpa<B extends Event, E extends Event, V extends Individual<B, E>> extends UniquelyIdentifiableJpa implements State<B, E, V> {
 
-    @ManyToOne(targetEntity = IndividualJpa.class, cascade = { CascadeType.PERSIST, CascadeType.MERGE })
+    @ManyToOne(targetEntity = IndividualJpa.class)
     private V individual;
 
-    @OneToOne(targetEntity = EventJpa.class, cascade = { CascadeType.ALL })
+    @OneToOne(targetEntity = EventJpa.class)
     private B beginning;
 
-    @OneToOne(targetEntity = EventJpa.class, cascade = { CascadeType.ALL })
+    @OneToOne(targetEntity = EventJpa.class)
     private E ending;
 
     /**

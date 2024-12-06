@@ -1,6 +1,5 @@
 package uk.co.aosd.onto.jpa;
 
-import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToOne;
@@ -27,16 +26,16 @@ import uk.co.aosd.onto.organisation.Membership;
 @NoArgsConstructor
 @EqualsAndHashCode(callSuper = true)
 public class MembershipJpa<R extends Role> extends UniquelyIdentifiableJpa implements Membership<R> {
-    @ManyToOne(targetEntity = HumanJpa.class, cascade = { CascadeType.PERSIST, CascadeType.MERGE })
+    @ManyToOne(targetEntity = HumanJpa.class)
     private Human member;
 
-    @ManyToOne(targetEntity = RoleJpa.class, cascade = { CascadeType.PERSIST, CascadeType.MERGE })
+    @ManyToOne(targetEntity = RoleJpa.class)
     private R role;
 
-    @OneToOne(targetEntity = AppointedJpa.class, cascade = { CascadeType.ALL })
+    @OneToOne(targetEntity = AppointedJpa.class)
     private Appointed beginning;
 
-    @OneToOne(targetEntity = RemovedJpa.class, cascade = { CascadeType.ALL })
+    @OneToOne(targetEntity = RemovedJpa.class)
     private Removed ending;
 
     /**

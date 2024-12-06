@@ -119,16 +119,14 @@ public class OntologyServicesJpa implements OntologyServices {
         // The previous owneship ends at the from event.
         final var transferredFromEvent = new TransferredFromJpa(Util.randId(), from.getFrom(), from.getTo());
         final var transferredToEvent = new TransferredToJpa(Util.randId(), to.getFrom(), to.getTo());
-        final var endOwnership = createOwnership(current.getIdentifier(), current.getActionsDescription(), current.getOwner(), current.getOwned(),
-            current.getBeginning(),
-            transferredToEvent);
+        ((OwningJpa<A, B, C, D>) current).setEnding(transferredToEvent);
 
         // The new ownership starts at the from event.
         final var ownershipEnds = new TransferredToJpa(Util.randId(), null, null);
-        final var newOwnership = createOwnership(identifier, actionsDescription, newOwner, current.getOwned(), transferredFromEvent, ownershipEnds);
+        final var newOwnership = createOwnership(Util.randId(), actionsDescription, newOwner, current.getOwned(), transferredFromEvent, ownershipEnds);
 
         // The transfer happens at the from event and finishes at the from event.
-        return new TransferringOfOwnershipJpa<>(identifier, actionsDescription, endOwnership, newOwnership, transferredFromEvent, transferredToEvent);
+        return new TransferringOfOwnershipJpa<>(identifier, actionsDescription, current, newOwnership, transferredFromEvent, transferredToEvent);
     }
 
     @Override
