@@ -1,6 +1,7 @@
 package uk.co.aosd.onto.jpa;
 
 import jakarta.persistence.CascadeType;
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToOne;
@@ -20,12 +21,14 @@ import uk.co.aosd.onto.ownership.TransferringOfOwnership;
  *
  * @author Tony Walmsley
  */
-@Entity
+@Entity(name = "TRANSFERRING_OF_OWNERSHIP")
 @Data
 @NoArgsConstructor
 @EqualsAndHashCode(callSuper = true)
 public class TransferringOfOwnershipJpa<A extends Event, B extends Event, C extends Event, D extends Event> extends UniquelyIdentifiableJpa
     implements TransferringOfOwnership<A, B, C, D> {
+
+    @Column(name = "ACTIONS_DESCRIPTION", nullable = false, updatable = false, columnDefinition = "LONGTEXT")
     private String actionsDescription;
 
     @ManyToOne(targetEntity = OwningJpa.class, cascade = { CascadeType.PERSIST, CascadeType.MERGE })

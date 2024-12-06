@@ -21,7 +21,7 @@ import uk.co.aosd.onto.organisation.Membership;
  *
  * @author Tony Walmsley
  */
-@Entity
+@Entity(name = "MEMBERSHIP")
 @Data
 @AllArgsConstructor
 @NoArgsConstructor

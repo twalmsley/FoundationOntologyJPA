@@ -22,7 +22,7 @@ import uk.co.aosd.onto.jpa.events.DeletedJpa;
  *
  * @author Tony Walmsley
  */
-@Entity
+@Entity(name = "POSSIBLE_WORLD")
 @Data
 @NoArgsConstructor
 @EqualsAndHashCode(callSuper = true)

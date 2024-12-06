@@ -21,7 +21,7 @@ import uk.co.aosd.onto.organisation.Organisation;
  *
  * @author Tony Walmsley
  */
-@Entity
+@Entity(name = "EMPLOYMENT")
 @Data
 @NoArgsConstructor
 @EqualsAndHashCode(callSuper = true)
@@ -33,9 +33,10 @@ public class EmploymentJpa extends UniquelyIdentifiableJpa implements Employment
     @ManyToOne(targetEntity = HumanJpa.class, cascade = { CascadeType.PERSIST, CascadeType.MERGE })
     private Human employee;
 
-    @Column(name = "description")
+    @Column(name = "DESCRIPTION", nullable = false, updatable = true, columnDefinition = "LONGTEXT")
     private String actionsDescription;
 
+    @Column(name = "CONTRACT", nullable = false, updatable = true, columnDefinition = "LONGTEXT")
     private String contract;
 
     @OneToOne(targetEntity = AppointedJpa.class, cascade = { CascadeType.ALL })

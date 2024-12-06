@@ -1,5 +1,6 @@
 package uk.co.aosd.onto.jpa;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.Inheritance;
@@ -14,12 +15,13 @@ import uk.co.aosd.onto.foundation.UniquelyIdentifiable;
  *
  * @author Tony Walmsley
  */
-@Entity
+@Entity(name = "UNIQUELY_IDENTIFIABLE")
 @Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
 public class UniquelyIdentifiableJpa implements UniquelyIdentifiable {
     @Id
+    @Column(name = "IDENTIFIER", nullable = false, updatable = false, unique = true, length = 36, columnDefinition = "CHAR(36)")
     private String identifier;
 }

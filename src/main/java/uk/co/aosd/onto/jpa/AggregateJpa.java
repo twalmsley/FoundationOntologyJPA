@@ -25,19 +25,21 @@ import uk.co.aosd.onto.jpa.events.DisaggregatedJpa;
  *
  * @author Tony Walmsley
  */
-@Entity
+@Entity(name = "AGGREGATE")
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
 public class AggregateJpa<N extends Number, U extends Unit, T> implements Aggregate<N, U, T> {
     @Id
+    @Column(name = "IDENTIFIER")
     private String identifier;
 
-    @Column(name = "kind")
+    @Column(name = "KIND", nullable = false, length = 255, unique = true, updatable = false, columnDefinition = "VARCHAR(255)")
     @Convert(converter = ClassConverter.class)
     @Target(Class.class)
     private Class<T> kind;
 
+    @Column(name = "QUANTITY", nullable = false, updatable = false, columnDefinition = "VARCHAR(255)")
     @Convert(converter = ScalarValueConverter.class)
     @Target(ScalarValue.class)
     private ScalarValue<N, U> quantity;

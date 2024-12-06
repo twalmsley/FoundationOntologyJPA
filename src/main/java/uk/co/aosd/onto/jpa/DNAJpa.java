@@ -2,9 +2,8 @@ package uk.co.aosd.onto.jpa;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 import uk.co.aosd.onto.biological.DNA;
 
@@ -13,15 +12,20 @@ import uk.co.aosd.onto.biological.DNA;
  *
  * @author Tony Walmsley
  */
-@Entity
+@Entity(name = "DNA")
 @Data
-@AllArgsConstructor
 @NoArgsConstructor
-public class DNAJpa implements DNA {
-    @Id
-    private String identifier;
+@EqualsAndHashCode(callSuper = true)
+public class DNAJpa extends UniquelyIdentifiableJpa implements DNA {
 
-    @Column(name = "DNA_VALUE")
+    @Column(name = "DNA_VALUE", nullable = false, updatable = false, columnDefinition = "LONGTEXT")
     private String dna;
 
+    /**
+     * Constructor.
+     */
+    public DNAJpa(final String identifier, final String dna) {
+        super(identifier);
+        this.dna = dna;
+    }
 }

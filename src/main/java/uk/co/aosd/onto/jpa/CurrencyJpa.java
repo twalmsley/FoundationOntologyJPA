@@ -1,9 +1,9 @@
 package uk.co.aosd.onto.jpa;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 import uk.co.aosd.onto.money.Currency;
 
@@ -12,16 +12,28 @@ import uk.co.aosd.onto.money.Currency;
  *
  * @author Tony Walmsley
  */
-@Entity
+@Entity(name = "CURRENCY")
 @Data
-@AllArgsConstructor
 @NoArgsConstructor
-public class CurrencyJpa implements Currency {
+@EqualsAndHashCode(callSuper = true)
+public class CurrencyJpa extends UniquelyIdentifiableJpa implements Currency {
 
-    @Id
-    private String identifier;
+    @Column(name = "ABBREVIATION", nullable = false, columnDefinition = "VARCHAR(3)")
     private String abbreviation;
+
+    @Column(name = "NAME", nullable = false, columnDefinition = "VARCHAR(255)")
     private String name;
+
+    @Column(name = "SYMBOL", nullable = false, columnDefinition = "CHAR(1)")
     private char symbol;
 
+    /**
+     * Constructor.
+     */
+    public CurrencyJpa(final String identifier, final String abbreviation, final String name, final char symbol) {
+        super(identifier);
+        this.abbreviation = abbreviation;
+        this.name = name;
+        this.symbol = symbol;
+    }
 }

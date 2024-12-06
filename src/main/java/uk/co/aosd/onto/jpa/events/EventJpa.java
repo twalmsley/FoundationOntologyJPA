@@ -19,17 +19,17 @@ import uk.co.aosd.onto.jpa.UniquelyIdentifiableJpa;
  *
  * @author Tony Walmsley
  */
-@Entity
+@Entity(name = "EVENT")
 @Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
 @Data
 @NoArgsConstructor
 @EqualsAndHashCode(callSuper = true)
 @DiscriminatorColumn(name = "EVENT_TYPE", discriminatorType = DiscriminatorType.STRING)
 public class EventJpa extends UniquelyIdentifiableJpa implements Event {
-    @Column(name = "beginning")
+    @Column(name = "BEGINNING", nullable = true)
     private Instant from;
 
-    @Column(name = "ending")
+    @Column(name = "ENDING", nullable = true)
     private Instant to;
 
     /**

@@ -3,12 +3,12 @@ package uk.co.aosd.onto.jpa;
 import java.util.Set;
 
 import jakarta.persistence.CascadeType;
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.OneToOne;
-import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 import uk.co.aosd.onto.events.Aggregated;
 import uk.co.aosd.onto.events.Disaggregated;
@@ -23,16 +23,14 @@ import uk.co.aosd.onto.jpa.events.DisaggregatedJpa;
  *
  * @author Tony Walmsley
  */
-@Entity
+@Entity(name = "AGGLOMERATE")
 @Data
-@AllArgsConstructor
 @NoArgsConstructor
-public class AgglomerateJpa implements Agglomerate {
-
-    @Id
-    private String identifier;
+@EqualsAndHashCode(callSuper = true)
+public class AgglomerateJpa extends UniquelyIdentifiableJpa implements Agglomerate {
 
     @OneToMany(cascade = CascadeType.ALL)
+    @Column(name = "PARTS")
     private Set<IndividualJpa> parts;
 
     @OneToOne(cascade = CascadeType.ALL, targetEntity = AggregatedJpa.class)
@@ -40,6 +38,16 @@ public class AgglomerateJpa implements Agglomerate {
 
     @OneToOne(cascade = CascadeType.ALL, targetEntity = DisaggregatedJpa.class)
     private Disaggregated ending;
+
+    /**
+     * Constructor.
+     */
+    public AgglomerateJpa(final String identifier, final Set<IndividualJpa> parts, final Aggregated beginning, final Disaggregated ending) {
+        super(identifier);
+        this.parts = parts;
+        this.beginning = beginning;
+        this.ending = ending;
+    }
 
     /**
      * Get the parts of this agglomerate.

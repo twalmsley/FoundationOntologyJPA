@@ -1,6 +1,7 @@
 package uk.co.aosd.onto.jpa;
 
 import jakarta.persistence.CascadeType;
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToOne;
@@ -17,11 +18,13 @@ import uk.co.aosd.onto.signifying.Signifier;
  *
  * @author Tony Walmsley
  */
-@Entity
+@Entity(name = "SIGNIFIER")
 @Data
 @NoArgsConstructor
 @EqualsAndHashCode(callSuper = true)
 public class SignifierJpa extends UniquelyIdentifiableJpa implements Signifier<String> {
+
+    @Column(name = "NAME", nullable = false, updatable = true, columnDefinition = "LONGTEXT")
     private String name;
 
     @ManyToOne(targetEntity = LanguageJpa.class, cascade = { CascadeType.PERSIST, CascadeType.MERGE })

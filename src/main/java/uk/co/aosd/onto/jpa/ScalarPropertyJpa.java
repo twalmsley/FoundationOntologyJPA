@@ -3,6 +3,7 @@ package uk.co.aosd.onto.jpa;
 import java.util.Set;
 
 import jakarta.persistence.CascadeType;
+import jakarta.persistence.Column;
 import jakarta.persistence.Convert;
 import jakarta.persistence.Entity;
 import jakarta.persistence.OneToMany;
@@ -21,7 +22,7 @@ import uk.co.aosd.onto.jpa.converters.ScalarValueConverter;
  *
  * @author Tony Walmsley
  */
-@Entity
+@Entity(name = "SCALAR_PROPERTY")
 @Data
 @NoArgsConstructor
 @EqualsAndHashCode(callSuper = true)
@@ -30,6 +31,7 @@ public class ScalarPropertyJpa<T extends UniquelyIdentifiable, U extends Number,
 
     @Convert(converter = ScalarValueConverter.class)
     @Target(ScalarValueJpa.class)
+    @Column(name = "PROPERTY", nullable = false, updatable = false, columnDefinition = "VARCHAR(255)")
     private ScalarValue<U, V> property;
 
     @OneToMany(targetEntity = UniquelyIdentifiableJpa.class, cascade = { CascadeType.PERSIST, CascadeType.MERGE })

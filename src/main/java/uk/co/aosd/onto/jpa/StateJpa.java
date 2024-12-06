@@ -17,7 +17,7 @@ import uk.co.aosd.onto.jpa.events.EventJpa;
  *
  * @author Tony Walmsley
  */
-@Entity
+@Entity(name = "STATE")
 @Data
 @NoArgsConstructor
 @EqualsAndHashCode(callSuper = true)

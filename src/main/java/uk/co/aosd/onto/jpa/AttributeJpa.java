@@ -7,10 +7,9 @@ import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Convert;
 import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
 import jakarta.persistence.ManyToOne;
-import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 import org.hibernate.annotations.Target;
 import uk.co.aosd.onto.foundation.Attribute;
@@ -23,25 +22,35 @@ import uk.co.aosd.onto.jpa.converters.SerializableConverter;
  *
  * @author Tony Walmsley
  */
-@Entity
+@Entity(name = "ATTRIBUTE")
 @Data
-@AllArgsConstructor
 @NoArgsConstructor
-public class AttributeJpa<I extends Individual<? extends Event, ? extends Event>, P extends Serializable> implements Attribute<I, P> {
-    @Id
-    private String identifier;
+@EqualsAndHashCode(callSuper = true)
+public class AttributeJpa<I extends Individual<? extends Event, ? extends Event>, P extends Serializable> extends UniquelyIdentifiableJpa
+    implements Attribute<I, P> {
 
     @ManyToOne(targetEntity = IndividualJpa.class, cascade = { CascadeType.PERSIST, CascadeType.MERGE })
     private I individual;
 
     @Convert(converter = SerializableConverter.class)
     @Target(Serializable.class)
+    @Column(name = "PROPERTY", nullable = false, updatable = false, columnDefinition = "BLOB")
     private P property;
 
-    @Column(name = "beginning")
+    @Column(name = "BEGINNING", nullable = true, updatable = true, columnDefinition = "TIMESTAMP")
     private Instant from;
 
-    @Column(name = "ending")
+    @Column(name = "ENDING", nullable = true, updatable = true, columnDefinition = "TIMESTAMP")
     private Instant to;
 
+    /**
+     * Constructor.
+     */
+    public AttributeJpa(final String identifier, final I individual, final P property, final Instant from, final Instant to) {
+        super(identifier);
+        this.individual = individual;
+        this.property = property;
+        this.from = from;
+        this.to = to;
+    }
 }

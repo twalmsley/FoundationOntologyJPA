@@ -16,7 +16,7 @@ import uk.co.aosd.onto.model.Model;
  *
  * @author Tony Walmsley
  */
-@Entity
+@Entity(name = "MODEL")
 @Data
 @NoArgsConstructor
 @EqualsAndHashCode(callSuper = true)

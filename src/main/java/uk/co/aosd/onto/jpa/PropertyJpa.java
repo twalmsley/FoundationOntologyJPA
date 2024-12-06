@@ -4,6 +4,7 @@ import java.io.Serializable;
 import java.util.Set;
 
 import jakarta.persistence.CascadeType;
+import jakarta.persistence.Column;
 import jakarta.persistence.Convert;
 import jakarta.persistence.Entity;
 import jakarta.persistence.OneToMany;
@@ -20,7 +21,7 @@ import uk.co.aosd.onto.jpa.converters.SerializableConverter;
  *
  * @author Tony Walmsley
  */
-@Entity
+@Entity(name = "PROPERTY")
 @Data
 @NoArgsConstructor
 @EqualsAndHashCode(callSuper = true)
@@ -31,6 +32,7 @@ public class PropertyJpa<T extends UniquelyIdentifiable, U extends Serializable>
 
     @Convert(converter = SerializableConverter.class)
     @Target(Serializable.class)
+    @Column(name = "PROPERTY", nullable = false, updatable = false, columnDefinition = "BLOB")
     private U property;
 
     /**

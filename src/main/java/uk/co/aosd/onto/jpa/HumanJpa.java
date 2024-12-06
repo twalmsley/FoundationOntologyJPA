@@ -22,7 +22,7 @@ import uk.co.aosd.onto.signifying.Signifier;
  *
  * @author Tony Walmsley
  */
-@Entity
+@Entity(name = "HUMAN")
 @Data
 @NoArgsConstructor
 @EqualsAndHashCode(callSuper = true)

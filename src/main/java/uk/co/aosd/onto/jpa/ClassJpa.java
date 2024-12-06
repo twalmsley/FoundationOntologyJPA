@@ -4,10 +4,9 @@ import java.util.Set;
 
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
-import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 import uk.co.aosd.onto.foundation.Class;
 import uk.co.aosd.onto.foundation.UniquelyIdentifiable;
@@ -17,15 +16,17 @@ import uk.co.aosd.onto.foundation.UniquelyIdentifiable;
  *
  * @author Tony Walmsley
  */
-@Entity
+@Entity(name = "CLASS")
 @Data
-@AllArgsConstructor
 @NoArgsConstructor
-public class ClassJpa<T extends UniquelyIdentifiable> implements Class<T> {
-    @Id
-    private String identifier;
+@EqualsAndHashCode(callSuper = true)
+public class ClassJpa<T extends UniquelyIdentifiable> extends UniquelyIdentifiableJpa implements Class<T> {
 
     @OneToMany(targetEntity = UniquelyIdentifiableJpa.class, cascade = CascadeType.ALL)
     private Set<T> members;
 
+    public ClassJpa(final String identifier, final Set<T> members) {
+        super(identifier);
+        this.members = members;
+    }
 }

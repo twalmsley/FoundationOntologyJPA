@@ -23,7 +23,7 @@ import uk.co.aosd.onto.jpa.converters.ScalarValueConverter;
  *
  * @author Tony Walmsley
  */
-@Entity
+@Entity(name = "SCALAR_ATTRIBUTE")
 @Data
 @NoArgsConstructor
 @EqualsAndHashCode(callSuper = true)
@@ -35,12 +35,13 @@ public class ScalarAttributeJpa<I extends Individual<? extends Event, ? extends 
 
     @Convert(converter = ScalarValueConverter.class)
     @Target(ScalarValueJpa.class)
+    @Column(name = "PROPERTY", nullable = false, updatable = false, columnDefinition = "VARCHAR(255)")
     private ScalarValue<N, U> property;
 
-    @Column(name = "beginning")
+    @Column(name = "BEGINNING")
     private Instant from;
 
-    @Column(name = "ending")
+    @Column(name = "ENDING")
     private Instant to;
 
     /**

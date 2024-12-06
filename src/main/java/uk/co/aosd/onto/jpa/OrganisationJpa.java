@@ -1,6 +1,7 @@
 package uk.co.aosd.onto.jpa;
 
 import jakarta.persistence.CascadeType;
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.OneToOne;
 import lombok.Data;
@@ -21,7 +22,7 @@ import uk.co.aosd.onto.signifying.Signifier;
  *
  * @author Tony Walmsley
  */
-@Entity
+@Entity(name = "ORGANISATION")
 @Data
 @NoArgsConstructor
 @EqualsAndHashCode(callSuper = true)
@@ -29,6 +30,7 @@ public class OrganisationJpa<R extends Role> extends UniquelyIdentifiableJpa imp
     @OneToOne(targetEntity = ClassJpa.class, cascade = { CascadeType.ALL })
     private Class<Membership<R>> members;
 
+    @Column(name = "PURPOSE", nullable = false, updatable = true, columnDefinition = "LONGTEXT")
     private String purpose;
 
     @OneToOne(targetEntity = ClassJpa.class, cascade = { CascadeType.ALL })
