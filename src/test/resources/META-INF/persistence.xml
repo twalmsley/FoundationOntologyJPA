@@ -68,4 +68,69 @@
             <property name="hibernate.show_sql" value="false"/>
         </properties>
     </persistence-unit>
+    <persistence-unit name="postgres-persistence-unit" transaction-type="RESOURCE_LOCAL">
+        <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
+        <class>uk.co.aosd.onto.jpa.events.AggregatedJpa</class>
+        <class>uk.co.aosd.onto.jpa.events.AppointedJpa</class>
+        <class>uk.co.aosd.onto.jpa.events.AssembledJpa</class>
+        <class>uk.co.aosd.onto.jpa.events.BirthJpa</class>
+        <class>uk.co.aosd.onto.jpa.events.BoughtJpa</class>
+        <class>uk.co.aosd.onto.jpa.events.BuiltJpa</class>
+        <class>uk.co.aosd.onto.jpa.events.ChangedJpa</class>
+        <class>uk.co.aosd.onto.jpa.events.CreatedJpa</class>
+        <class>uk.co.aosd.onto.jpa.events.DeathJpa</class>
+        <class>uk.co.aosd.onto.jpa.events.DecommissionedJpa</class>
+        <class>uk.co.aosd.onto.jpa.events.DeletedJpa</class>
+        <class>uk.co.aosd.onto.jpa.events.DestroyedJpa</class>
+        <class>uk.co.aosd.onto.jpa.events.DisaggregatedJpa</class>
+        <class>uk.co.aosd.onto.jpa.events.DisassembledJpa</class>
+        <class>uk.co.aosd.onto.jpa.events.DissolvedJpa</class>
+        <class>uk.co.aosd.onto.jpa.events.FormedJpa</class>
+        <class>uk.co.aosd.onto.jpa.events.InstalledJpa</class>
+        <class>uk.co.aosd.onto.jpa.events.RemovedJpa</class>
+        <class>uk.co.aosd.onto.jpa.events.ResignifiedJpa</class>
+        <class>uk.co.aosd.onto.jpa.events.ScrappedJpa</class>
+        <class>uk.co.aosd.onto.jpa.events.SoldJpa</class>
+        <class>uk.co.aosd.onto.jpa.events.StartedJpa</class>
+        <class>uk.co.aosd.onto.jpa.events.StoppedJpa</class>
+        <class>uk.co.aosd.onto.jpa.events.TransferredFromJpa</class>
+        <class>uk.co.aosd.onto.jpa.events.TransferredToJpa</class>
+
+        <class>uk.co.aosd.onto.jpa.AgglomerateJpa</class>
+        <class>uk.co.aosd.onto.jpa.AggregateJpa</class>
+        <class>uk.co.aosd.onto.jpa.AttributeJpa</class>
+        <class>uk.co.aosd.onto.jpa.ClassJpa</class>
+        <class>uk.co.aosd.onto.jpa.CurrencyJpa</class>
+        <class>uk.co.aosd.onto.jpa.DNAJpa</class>
+        <class>uk.co.aosd.onto.jpa.EmployeeRoleJpa</class>
+        <class>uk.co.aosd.onto.jpa.EmploymentJpa</class>
+        <class>uk.co.aosd.onto.jpa.EventJpa</class>
+        <class>uk.co.aosd.onto.jpa.HumanJpa</class>
+        <class>uk.co.aosd.onto.jpa.IndividualJpa</class>
+        <class>uk.co.aosd.onto.jpa.LanguageJpa</class>
+        <class>uk.co.aosd.onto.jpa.MembershipJpa</class>
+        <class>uk.co.aosd.onto.jpa.ModelJpa</class>
+        <class>uk.co.aosd.onto.jpa.MonetaryValueJpa</class>
+        <class>uk.co.aosd.onto.jpa.OrganisationJpa</class>
+        <class>uk.co.aosd.onto.jpa.OwningJpa</class>
+        <class>uk.co.aosd.onto.jpa.PossibleWorldJpa</class>
+        <class>uk.co.aosd.onto.jpa.PropertyJpa</class>
+        <class>uk.co.aosd.onto.jpa.RoleJpa</class>
+        <class>uk.co.aosd.onto.jpa.ScalarAttributeJpa</class>
+        <class>uk.co.aosd.onto.jpa.ScalarPropertyJpa</class>
+        <class>uk.co.aosd.onto.jpa.SignifierJpa</class>
+        <class>uk.co.aosd.onto.jpa.SignifyingJpa</class>
+        <class>uk.co.aosd.onto.jpa.StateJpa</class>
+        <class>uk.co.aosd.onto.jpa.TransferringOfOwnershipJpa</class>
+        <class>uk.co.aosd.onto.jpa.UniquelyIdentifiableJpa</class>
+        <properties>
+            <property name="javax.persistence.jdbc.driver" value="org.postgresql.Driver"/>
+            <property name="javax.persistence.jdbc.url" value="jdbc:postgresql://localhost:5432/postgres"/>
+            <property name="javax.persistence.jdbc.user" value="postgres"/>
+            <property name="javax.persistence.jdbc.password" value="postgres"/>
+            <property name="hibernate.dialect" value="org.hibernate.dialect.PostgreSQLDialect"/>
+            <property name="hibernate.hbm2ddl.auto" value="update"/>
+            <property name="hibernate.show_sql" value="true"/>
+        </properties>
+    </persistence-unit>
 </persistence>

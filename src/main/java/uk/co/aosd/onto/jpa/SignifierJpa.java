@@ -23,7 +23,7 @@ import uk.co.aosd.onto.signifying.Signifier;
 @EqualsAndHashCode(callSuper = true)
 public class SignifierJpa extends UniquelyIdentifiableJpa implements Signifier<String> {
 
-    @Column(name = "NAME", nullable = false, updatable = true, columnDefinition = "LONGTEXT")
+    @Column(name = "NAME", nullable = false, updatable = true, columnDefinition = "TEXT")
     private String name;
 
     @ManyToOne(targetEntity = LanguageJpa.class)

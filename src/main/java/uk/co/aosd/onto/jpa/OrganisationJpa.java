@@ -29,7 +29,7 @@ public class OrganisationJpa<R extends Role> extends UniquelyIdentifiableJpa imp
     @OneToOne(targetEntity = ClassJpa.class)
     private Class<Membership<R>> members;
 
-    @Column(name = "PURPOSE", nullable = false, updatable = true, columnDefinition = "LONGTEXT")
+    @Column(name = "PURPOSE", nullable = false, updatable = true, columnDefinition = "TEXT")
     private String purpose;
 
     @OneToOne(targetEntity = ClassJpa.class)

@@ -22,6 +22,6 @@ import uk.co.aosd.onto.foundation.UniquelyIdentifiable;
 @NoArgsConstructor
 public class UniquelyIdentifiableJpa implements UniquelyIdentifiable {
     @Id
-    @Column(name = "IDENTIFIER", nullable = false, updatable = false, unique = true, length = 36, columnDefinition = "CHAR(36)")
+    @Column(name = "IDENTIFIER", nullable = false, updatable = false, unique = true, length = 36, columnDefinition = "VARCHAR(36)")
     private String identifier;
 }

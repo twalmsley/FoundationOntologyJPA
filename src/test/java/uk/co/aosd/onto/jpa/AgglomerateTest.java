@@ -93,5 +93,9 @@ public class AgglomerateTest {
         assertEquals(entity.getParts(), found.getParts());
         assertEquals(entity.getBeginning(), found.getBeginning());
         assertEquals(entity.getEnding(), found.getEnding());
+
+        final var found2 = em.find(UniquelyIdentifiableJpa.class, entity.getIdentifier());
+        assertNotNull(found2);
+        assertEquals(entity.getIdentifier(), found2.getIdentifier());
     }
 }

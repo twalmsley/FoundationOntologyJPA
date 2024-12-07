@@ -32,10 +32,10 @@ public class EmploymentJpa extends UniquelyIdentifiableJpa implements Employment
     @ManyToOne(targetEntity = HumanJpa.class)
     private Human employee;
 
-    @Column(name = "DESCRIPTION", nullable = false, updatable = true, columnDefinition = "LONGTEXT")
+    @Column(name = "DESCRIPTION", nullable = false, updatable = true, columnDefinition = "TEXT")
     private String actionsDescription;
 
-    @Column(name = "CONTRACT", nullable = false, updatable = true, columnDefinition = "LONGTEXT")
+    @Column(name = "CONTRACT", nullable = false, updatable = true, columnDefinition = "TEXT")
     private String contract;
 
     @OneToOne(targetEntity = AppointedJpa.class)

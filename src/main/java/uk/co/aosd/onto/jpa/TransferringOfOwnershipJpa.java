@@ -27,7 +27,7 @@ import uk.co.aosd.onto.ownership.TransferringOfOwnership;
 public class TransferringOfOwnershipJpa<A extends Event, B extends Event, C extends Event, D extends Event> extends UniquelyIdentifiableJpa
     implements TransferringOfOwnership<A, B, C, D> {
 
-    @Column(name = "ACTIONS_DESCRIPTION", nullable = false, updatable = false, columnDefinition = "LONGTEXT")
+    @Column(name = "ACTIONS_DESCRIPTION", nullable = false, updatable = false, columnDefinition = "TEXT")
     private String actionsDescription;
 
     @ManyToOne(targetEntity = OwningJpa.class)

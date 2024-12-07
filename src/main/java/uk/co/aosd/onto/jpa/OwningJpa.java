@@ -25,7 +25,7 @@ import uk.co.aosd.onto.ownership.Owning;
 @NoArgsConstructor
 @EqualsAndHashCode(callSuper = true)
 public class OwningJpa<A extends Event, B extends Event, C extends Event, D extends Event> extends UniquelyIdentifiableJpa implements Owning<A, B, C, D> {
-    @Column(name = "ACTIONS_DESCRIPTION", nullable = false, updatable = false, columnDefinition = "LONGTEXT")
+    @Column(name = "ACTIONS_DESCRIPTION", nullable = false, updatable = false, columnDefinition = "TEXT")
     private String actionsDescription;
 
     @ManyToOne(targetEntity = IndividualJpa.class)

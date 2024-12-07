@@ -31,7 +31,7 @@ public class PropertyJpa<T extends UniquelyIdentifiable, U extends Serializable>
 
     @Convert(converter = SerializableConverter.class)
     @Target(Serializable.class)
-    @Column(name = "PROPERTY", nullable = false, updatable = false, columnDefinition = "BLOB")
+    @Column(name = "PROPERTY", nullable = false, updatable = false, columnDefinition = "BYTEA")
     private U property;
 
     /**

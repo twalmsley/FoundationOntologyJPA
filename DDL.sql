@@ -97,7 +97,7 @@ create table ATTRIBUTE (
     ENDING TIMESTAMP,
     IDENTIFIER CHAR(36) not null,
     individual_IDENTIFIER CHAR(36),
-    PROPERTY BLOB not null,
+    PROPERTY BYTEA not null,
     primary key (IDENTIFIER)
 );
 create table BIRTH_EVENT (
@@ -190,7 +190,7 @@ create table DISSOLVED_EVENT (
 );
 create table DNA (
     IDENTIFIER CHAR(36) not null,
-    DNA_VALUE LONGTEXT not null,
+    DNA_VALUE TEXT not null,
     primary key (IDENTIFIER)
 );
 create table EmployeeRole (
@@ -205,8 +205,8 @@ create table EMPLOYMENT (
     employee_IDENTIFIER CHAR(36),
     employer_IDENTIFIER CHAR(36),
     ending_IDENTIFIER CHAR(36) unique,
-    CONTRACT LONGTEXT not null,
-    DESCRIPTION LONGTEXT not null,
+    CONTRACT TEXT not null,
+    DESCRIPTION TEXT not null,
     primary key (IDENTIFIER)
 );
 create table EVENT (
@@ -272,7 +272,7 @@ create table ORGANISATION (
     members_IDENTIFIER CHAR(36) unique,
     names_IDENTIFIER CHAR(36) unique,
     units_IDENTIFIER CHAR(36) unique,
-    PURPOSE LONGTEXT not null,
+    PURPOSE TEXT not null,
     primary key (IDENTIFIER)
 );
 create table OWNING (
@@ -281,7 +281,7 @@ create table OWNING (
     ending_IDENTIFIER CHAR(36) unique,
     owned_IDENTIFIER CHAR(36),
     owner_IDENTIFIER CHAR(36),
-    ACTIONS_DESCRIPTION LONGTEXT not null,
+    ACTIONS_DESCRIPTION TEXT not null,
     primary key (IDENTIFIER)
 );
 create table POSSIBLE_WORLD (
@@ -297,7 +297,7 @@ create table POSSIBLE_WORLD_INDIVIDUAL (
 );
 create table PROPERTY (
     IDENTIFIER CHAR(36) not null,
-    PROPERTY BLOB not null,
+    PROPERTY BYTEA not null,
     primary key (IDENTIFIER)
 );
 create table PROPERTY_UNIQUELY_IDENTIFIABLE (
@@ -351,7 +351,7 @@ create table SIGNIFIER (
     beginning_IDENTIFIER CHAR(36) unique,
     ending_IDENTIFIER CHAR(36) unique,
     language_IDENTIFIER CHAR(36),
-    NAME LONGTEXT not null,
+    NAME TEXT not null,
     primary key (IDENTIFIER)
 );
 create table SIGNIFYING (
@@ -360,8 +360,8 @@ create table SIGNIFYING (
     ending_IDENTIFIER CHAR(36) unique,
     language_IDENTIFIER CHAR(36),
     named_IDENTIFIER CHAR(36),
-    ACTIONS_DESCRIPTION LONGTEXT not null,
-    NAME LONGTEXT not null,
+    ACTIONS_DESCRIPTION TEXT not null,
+    NAME TEXT not null,
     primary key (IDENTIFIER)
 );
 create table SOLD_EVENT (
@@ -407,7 +407,7 @@ create table TRANSFERRING_OF_OWNERSHIP (
     ending_IDENTIFIER CHAR(36) unique,
     from_IDENTIFIER CHAR(36),
     to_IDENTIFIER CHAR(36),
-    ACTIONS_DESCRIPTION LONGTEXT not null,
+    ACTIONS_DESCRIPTION TEXT not null,
     primary key (IDENTIFIER)
 );
 create table UNIQUELY_IDENTIFIABLE (
