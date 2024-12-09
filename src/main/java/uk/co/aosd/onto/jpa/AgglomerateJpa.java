@@ -5,7 +5,6 @@ import java.util.Set;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.OneToMany;
-import jakarta.persistence.OneToOne;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
@@ -14,8 +13,7 @@ import uk.co.aosd.onto.events.Disaggregated;
 import uk.co.aosd.onto.foundation.Agglomerate;
 import uk.co.aosd.onto.foundation.Event;
 import uk.co.aosd.onto.foundation.Individual;
-import uk.co.aosd.onto.jpa.events.AggregatedJpa;
-import uk.co.aosd.onto.jpa.events.DisaggregatedJpa;
+import uk.co.aosd.onto.jpa.events.EventJpa;
 
 /**
  * An implementation of the Agglomerate interface.
@@ -26,26 +24,18 @@ import uk.co.aosd.onto.jpa.events.DisaggregatedJpa;
 @Data
 @NoArgsConstructor
 @EqualsAndHashCode(callSuper = true)
-public class AgglomerateJpa extends UniquelyIdentifiableJpa implements Agglomerate {
+public class AgglomerateJpa extends IndividualJpa<Aggregated, Disaggregated> implements Agglomerate {
 
     @OneToMany
     @Column(name = "PARTS")
-    private Set<IndividualJpa> parts;
-
-    @OneToOne(targetEntity = AggregatedJpa.class)
-    private Aggregated beginning;
-
-    @OneToOne(targetEntity = DisaggregatedJpa.class)
-    private Disaggregated ending;
+    private Set<IndividualJpa<EventJpa, EventJpa>> parts;
 
     /**
      * Constructor.
      */
-    public AgglomerateJpa(final String identifier, final Set<IndividualJpa> parts, final Aggregated beginning, final Disaggregated ending) {
-        super(identifier);
+    public AgglomerateJpa(final String identifier, final Set<IndividualJpa<EventJpa, EventJpa>> parts, final Aggregated beginning, final Disaggregated ending) {
+        super(identifier, beginning, ending);
         this.parts = parts;
-        this.beginning = beginning;
-        this.ending = ending;
     }
 
     /**

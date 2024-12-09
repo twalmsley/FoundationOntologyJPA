@@ -29,7 +29,7 @@ public class PropertyTest {
 
     @BeforeAll
     public static void setUpClass() {
-        emf = Persistence.createEntityManagerFactory("h2-persistence-unit");
+        emf = Persistence.createEntityManagerFactory("postgres-persistence-unit");
     }
 
     @BeforeEach
@@ -63,8 +63,8 @@ public class PropertyTest {
         final var to1 = new DestroyedJpa(Util.randId(), Instant.now(), Instant.now());
         final var from2 = new CreatedJpa(Util.randId(), Instant.now(), Instant.now());
         final var to2 = new DestroyedJpa(Util.randId(), Instant.now(), Instant.now());
-        final var item1 = new IndividualJpa(Util.randId(), from1, to1);
-        final var item2 = new IndividualJpa(Util.randId(), from2, to2);
+        final var item1 = new IndividualJpa<>(Util.randId(), from1, to1);
+        final var item2 = new IndividualJpa<>(Util.randId(), from2, to2);
         final var entity = new PropertyJpa<>(Util.randId(), Set.of(item1, item2), "Has this property");
 
         em.getTransaction().begin();

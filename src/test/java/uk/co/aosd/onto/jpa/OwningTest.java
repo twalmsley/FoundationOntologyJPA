@@ -31,7 +31,7 @@ public class OwningTest {
 
     @BeforeAll
     public static void setUpClass() {
-        emf = Persistence.createEntityManagerFactory("h2-persistence-unit");
+        emf = Persistence.createEntityManagerFactory("postgres-persistence-unit");
     }
 
     @BeforeEach
@@ -65,8 +65,8 @@ public class OwningTest {
         final var to1 = new DestroyedJpa(Util.randId(), Instant.now(), Instant.now());
         final var from2 = new CreatedJpa(Util.randId(), Instant.now(), Instant.now());
         final var to2 = new DestroyedJpa(Util.randId(), Instant.now(), Instant.now());
-        final var owner = new IndividualJpa(Util.randId(), from1, to1);
-        final var owned = new IndividualJpa(Util.randId(), from2, to2);
+        final var owner = new IndividualJpa<>(Util.randId(), from1, to1);
+        final var owned = new IndividualJpa<>(Util.randId(), from2, to2);
         final TransferredFrom beginning = new TransferredFromJpa(Util.randId(), Instant.now(), Instant.now());
         final TransferredTo ending = new TransferredToJpa(Util.randId(), Instant.now(), Instant.now());
         final var entity = new OwningJpa<>(Util.randId(), "Owning Something", owner, owned, beginning, ending);

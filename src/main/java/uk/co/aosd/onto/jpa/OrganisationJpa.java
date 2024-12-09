@@ -10,8 +10,6 @@ import uk.co.aosd.onto.events.Dissolved;
 import uk.co.aosd.onto.events.Formed;
 import uk.co.aosd.onto.foundation.Class;
 import uk.co.aosd.onto.foundation.Role;
-import uk.co.aosd.onto.jpa.events.DissolvedJpa;
-import uk.co.aosd.onto.jpa.events.FormedJpa;
 import uk.co.aosd.onto.organisation.Membership;
 import uk.co.aosd.onto.organisation.Organisation;
 import uk.co.aosd.onto.signifying.Signifier;
@@ -25,7 +23,7 @@ import uk.co.aosd.onto.signifying.Signifier;
 @Data
 @NoArgsConstructor
 @EqualsAndHashCode(callSuper = true)
-public class OrganisationJpa<R extends Role> extends UniquelyIdentifiableJpa implements Organisation {
+public class OrganisationJpa<R extends Role> extends IndividualJpa<Formed, Dissolved> implements Organisation {
     @OneToOne(targetEntity = ClassJpa.class)
     private Class<Membership<R>> members;
 
@@ -38,23 +36,15 @@ public class OrganisationJpa<R extends Role> extends UniquelyIdentifiableJpa imp
     @OneToOne(targetEntity = ClassJpa.class)
     private Class<Signifier<String>> names;
 
-    @OneToOne(targetEntity = FormedJpa.class)
-    private Formed beginning;
-
-    @OneToOne(targetEntity = DissolvedJpa.class)
-    private Dissolved ending;
-
     /**
      * Constructor.
      */
     public OrganisationJpa(final String identifier, final Class<Membership<R>> members, final String purpose, final Class<Organisation> units,
         final Class<Signifier<String>> names, final Formed beginning, final Dissolved ending) {
-        super(identifier);
+        super(identifier, beginning, ending);
         this.members = members;
         this.purpose = purpose;
         this.units = units;
         this.names = names;
-        this.beginning = beginning;
-        this.ending = ending;
     }
 }

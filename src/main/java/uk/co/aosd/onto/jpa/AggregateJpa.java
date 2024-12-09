@@ -3,10 +3,8 @@ package uk.co.aosd.onto.jpa;
 import jakarta.persistence.Column;
 import jakarta.persistence.Convert;
 import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.OneToOne;
-import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 import org.hibernate.annotations.Target;
 import uk.co.aosd.onto.events.Aggregated;
@@ -16,8 +14,6 @@ import uk.co.aosd.onto.foundation.ScalarValue;
 import uk.co.aosd.onto.foundation.Unit;
 import uk.co.aosd.onto.jpa.converters.ClassConverter;
 import uk.co.aosd.onto.jpa.converters.ScalarValueConverter;
-import uk.co.aosd.onto.jpa.events.AggregatedJpa;
-import uk.co.aosd.onto.jpa.events.DisaggregatedJpa;
 
 /**
  * An implementation of the Aggregation interface.
@@ -26,13 +22,9 @@ import uk.co.aosd.onto.jpa.events.DisaggregatedJpa;
  */
 @Entity(name = "AGGREGATE")
 @Data
-@AllArgsConstructor
 @NoArgsConstructor
-public class AggregateJpa<N extends Number, U extends Unit, T> implements Aggregate<N, U, T> {
-    @Id
-    @Column(name = "IDENTIFIER")
-    private String identifier;
-
+@EqualsAndHashCode(callSuper = true)
+public class AggregateJpa<N extends Number, U extends Unit, T> extends IndividualJpa<Aggregated, Disaggregated> implements Aggregate<N, U, T> {
     @Column(name = "KIND", nullable = false, length = 255, unique = true, updatable = false, columnDefinition = "VARCHAR(255)")
     @Convert(converter = ClassConverter.class)
     @Target(Class.class)
@@ -43,10 +35,13 @@ public class AggregateJpa<N extends Number, U extends Unit, T> implements Aggreg
     @Target(ScalarValue.class)
     private ScalarValue<N, U> quantity;
 
-    @OneToOne(targetEntity = AggregatedJpa.class)
-    private Aggregated beginning;
-
-    @OneToOne(targetEntity = DisaggregatedJpa.class)
-    private Disaggregated ending;
-
+    /**
+     * Constructor.
+     */
+    public AggregateJpa(final String identifier, final Class<T> kind, final ScalarValue<N, U> quantity, final Aggregated beginning,
+        final Disaggregated ending) {
+        super(identifier, beginning, ending);
+        this.kind = kind;
+        this.quantity = quantity;
+    }
 }

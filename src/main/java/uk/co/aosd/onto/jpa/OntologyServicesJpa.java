@@ -32,6 +32,9 @@ import uk.co.aosd.onto.foundation.ScalarValue;
 import uk.co.aosd.onto.foundation.State;
 import uk.co.aosd.onto.foundation.UniquelyIdentifiable;
 import uk.co.aosd.onto.foundation.Unit;
+import uk.co.aosd.onto.jpa.events.AggregatedJpa;
+import uk.co.aosd.onto.jpa.events.DisaggregatedJpa;
+import uk.co.aosd.onto.jpa.events.EventJpa;
 import uk.co.aosd.onto.jpa.events.TransferredFromJpa;
 import uk.co.aosd.onto.jpa.events.TransferredToJpa;
 import uk.co.aosd.onto.language.Language;
@@ -147,9 +150,9 @@ public class OntologyServicesJpa implements OntologyServices {
     @Override
     public Agglomerate createAgglomerate(final String identifier, final Set<Individual<? extends Event, ? extends Event>> items, final Aggregated from,
         final Disaggregated to) {
-        final Set<IndividualJpa> parts = new HashSet<>();
-        items.forEach(i -> parts.add((IndividualJpa) i));
-        return new AgglomerateJpa(identifier, parts, from, to);
+        final Set<IndividualJpa<EventJpa, EventJpa>> parts = new HashSet<>();
+        items.forEach(i -> parts.add((IndividualJpa<EventJpa, EventJpa>) i));
+        return new AgglomerateJpa(identifier, parts, (AggregatedJpa) from, (DisaggregatedJpa) to);
     }
 
     @Override

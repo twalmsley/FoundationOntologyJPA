@@ -34,7 +34,7 @@ public class AgglomerateTest {
 
     @BeforeAll
     public static void setUpClass() {
-        emf = Persistence.createEntityManagerFactory("h2-persistence-unit");
+        emf = Persistence.createEntityManagerFactory("postgres-persistence-unit");
     }
 
     @BeforeEach
@@ -71,9 +71,9 @@ public class AgglomerateTest {
         final Aggregated beginning = new AggregatedJpa(Util.randId(), null, null);
         final Disaggregated ending = new DisaggregatedJpa(Util.randId(), null, null);
 
-        final IndividualJpa handle = new IndividualJpa(Util.randId(), handleCreated, handleDestroyed);
-        final IndividualJpa head = new IndividualJpa(Util.randId(), headBuilt, headScrapped);
-        final Set<IndividualJpa> parts = Set.of(handle, head);
+        final var handle = new IndividualJpa<>(Util.randId(), handleCreated, handleDestroyed);
+        final var head = new IndividualJpa<>(Util.randId(), headBuilt, headScrapped);
+        final var parts = Set.of(handle, head);
         final var entity = new AgglomerateJpa(Util.randId(), parts, beginning, ending);
         em.getTransaction().begin();
         em.persist(handleCreated);

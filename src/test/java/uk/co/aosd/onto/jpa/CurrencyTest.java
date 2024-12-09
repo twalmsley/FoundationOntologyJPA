@@ -23,7 +23,7 @@ public class CurrencyTest {
 
     @BeforeAll
     public static void setUpClass() {
-        emf = Persistence.createEntityManagerFactory("h2-persistence-unit");
+        emf = Persistence.createEntityManagerFactory("postgres-persistence-unit");
     }
 
     @BeforeEach

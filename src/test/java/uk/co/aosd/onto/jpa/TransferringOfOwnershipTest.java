@@ -33,7 +33,7 @@ public class TransferringOfOwnershipTest {
 
     @BeforeAll
     public static void setUpClass() {
-        emf = Persistence.createEntityManagerFactory("h2-persistence-unit");
+        emf = Persistence.createEntityManagerFactory("postgres-persistence-unit");
     }
 
     @BeforeEach
@@ -66,10 +66,10 @@ public class TransferringOfOwnershipTest {
         final var svc = new OntologyServicesJpa();
         final var ownerBorn = new BirthJpa(Util.randId(), Instant.now(), Instant.now());
         final var ownerDied = new DeathJpa(Util.randId(), Instant.now(), Instant.now());
-        final var owner = new IndividualJpa(Util.randId(), ownerBorn, ownerDied);
+        final var owner = new IndividualJpa<>(Util.randId(), ownerBorn, ownerDied);
         final var ownedCreated = new CreatedJpa(Util.randId(), Instant.now(), Instant.now());
         final var ownedDestroyed = new DestroyedJpa(Util.randId(), Instant.now(), Instant.now());
-        final var owned = new IndividualJpa(Util.randId(), ownedCreated, ownedDestroyed);
+        final var owned = new IndividualJpa<>(Util.randId(), ownedCreated, ownedDestroyed);
 
         final var own1From = new TransferredFromJpa(Util.randId(), Instant.now(), Instant.now());
         final var own1To = new TransferredToJpa(Util.randId(), Instant.now(), Instant.now());
@@ -77,7 +77,7 @@ public class TransferringOfOwnershipTest {
 
         final var nextOwnerBorn = new BirthJpa(Util.randId(), Instant.now(), Instant.now());
         final var nextOwnerDied = new DeathJpa(Util.randId(), Instant.now(), Instant.now());
-        final var nextOwner = new IndividualJpa(Util.randId(), nextOwnerBorn, nextOwnerDied);
+        final var nextOwner = new IndividualJpa<>(Util.randId(), nextOwnerBorn, nextOwnerDied);
         final var txferFrom = new StartedJpa(Util.randId(), Instant.now(), Instant.now());
         final var txFerTo = new StoppedJpa(Util.randId(), Instant.now(), Instant.now());
         final var entity = svc.transferOwnership(Util.randId(), "Transferring ownership", current, nextOwner, txferFrom, txFerTo);

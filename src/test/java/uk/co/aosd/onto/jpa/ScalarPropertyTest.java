@@ -30,7 +30,7 @@ public class ScalarPropertyTest {
 
     @BeforeAll
     public static void setUpClass() {
-        emf = Persistence.createEntityManagerFactory("h2-persistence-unit");
+        emf = Persistence.createEntityManagerFactory("postgres-persistence-unit");
     }
 
     @BeforeEach
@@ -64,7 +64,7 @@ public class ScalarPropertyTest {
         final Instant from = to.minusSeconds(60);
         final var beginning = new BuiltJpa(Util.randId(), from, to);
         final var ending = new ScrappedJpa(Util.randId(), from, to);
-        final var ind = new IndividualJpa(Util.randId(), beginning, ending);
+        final var ind = new IndividualJpa<>(Util.randId(), beginning, ending);
         final var scalarValue = new ScalarValueJpa<>(1, Units.METERS);
         final var entity = new ScalarPropertyJpa<>(Util.randId(), scalarValue, Set.of(ind));
 

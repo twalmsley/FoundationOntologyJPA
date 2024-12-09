@@ -29,7 +29,7 @@ public class StateTest {
 
     @BeforeAll
     public static void setUpClass() {
-        emf = Persistence.createEntityManagerFactory("h2-persistence-unit");
+        emf = Persistence.createEntityManagerFactory("postgres-persistence-unit");
     }
 
     @BeforeEach
@@ -61,7 +61,7 @@ public class StateTest {
     public void test() {
         final var personFrom = new BirthJpa(Util.randId(), Instant.now(), Instant.now());
         final var personTo = new DeathJpa(Util.randId(), Instant.now(), Instant.now());
-        final var person = new IndividualJpa(Util.randId(), personFrom, personTo);
+        final var person = new IndividualJpa<>(Util.randId(), personFrom, personTo);
         final var stateFrom = new CreatedJpa(Util.randId(), Instant.now(), Instant.now());
         final var stateTo = new DestroyedJpa(Util.randId(), Instant.now(), Instant.now());
         final var entity = new StateJpa<>(Util.randId(), person, stateFrom, stateTo);

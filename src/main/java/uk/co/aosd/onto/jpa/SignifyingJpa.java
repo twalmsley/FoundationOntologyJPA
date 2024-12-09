@@ -3,13 +3,11 @@ package uk.co.aosd.onto.jpa;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.ManyToOne;
-import jakarta.persistence.OneToOne;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 import uk.co.aosd.onto.events.Resignified;
 import uk.co.aosd.onto.foundation.UniquelyIdentifiable;
-import uk.co.aosd.onto.jpa.events.ResignifiedJpa;
 import uk.co.aosd.onto.language.Language;
 import uk.co.aosd.onto.signifying.Signifying;
 
@@ -22,7 +20,7 @@ import uk.co.aosd.onto.signifying.Signifying;
 @Data
 @NoArgsConstructor
 @EqualsAndHashCode(callSuper = true)
-public class SignifyingJpa extends UniquelyIdentifiableJpa implements Signifying<String> {
+public class SignifyingJpa extends IndividualJpa<Resignified, Resignified> implements Signifying<String> {
 
     @Column(name = "ACTIONS_DESCRIPTION", nullable = false, updatable = false, columnDefinition = "TEXT")
     private String actionsDescription;
@@ -36,23 +34,15 @@ public class SignifyingJpa extends UniquelyIdentifiableJpa implements Signifying
     @ManyToOne(targetEntity = UniquelyIdentifiableJpa.class)
     private UniquelyIdentifiable named;
 
-    @OneToOne(targetEntity = ResignifiedJpa.class)
-    private Resignified beginning;
-
-    @OneToOne(targetEntity = ResignifiedJpa.class)
-    private Resignified ending;
-
     /**
      * Constructor.
      */
     public SignifyingJpa(final String identifier, final String actionsDescription, final String name, final Language language, final UniquelyIdentifiable named,
         final Resignified beginning, final Resignified ending) {
-        super(identifier);
+        super(identifier, beginning, ending);
         this.actionsDescription = actionsDescription;
         this.name = name;
         this.language = language;
         this.named = named;
-        this.beginning = beginning;
-        this.ending = ending;
     }
 }
