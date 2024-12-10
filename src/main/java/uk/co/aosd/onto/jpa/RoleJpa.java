@@ -15,13 +15,13 @@ import uk.co.aosd.onto.foundation.Role;
  * @author Tony Walmsley
  */
 @Entity(name = "ROLE")
-@Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
+@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
 @Data
 @NoArgsConstructor
 @EqualsAndHashCode(callSuper = true)
 public class RoleJpa extends UniquelyIdentifiableJpa implements Role {
 
-    @Column(name = "NAME", nullable = false, updatable = true, columnDefinition = "VARCHAR(255)")
+    @Column(name = "NAME", columnDefinition = "VARCHAR(255)")
     private String name;
 
     public RoleJpa(final String identifier, final String name) {

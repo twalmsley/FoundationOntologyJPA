@@ -2,9 +2,11 @@ package uk.co.aosd.onto.jpa.events;
 
 import java.time.Instant;
 
+import jakarta.persistence.DiscriminatorValue;
 import jakarta.persistence.Entity;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
+import lombok.NoArgsConstructor;
 import uk.co.aosd.onto.events.Created;
 
 /**
@@ -12,8 +14,10 @@ import uk.co.aosd.onto.events.Created;
  *
  * @author Tony Walmsley
  */
-@Entity(name = "CREATED_EVENT")
+@Entity
+@DiscriminatorValue("Created")
 @Data
+@NoArgsConstructor
 @EqualsAndHashCode(callSuper = true)
 public class CreatedJpa extends EventJpa implements Created {
     public CreatedJpa(final String identifier, final Instant from, final Instant to) {

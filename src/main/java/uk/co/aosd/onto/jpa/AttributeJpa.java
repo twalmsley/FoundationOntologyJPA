@@ -33,13 +33,13 @@ public class AttributeJpa<I extends Individual<? extends Event, ? extends Event>
 
     @Convert(converter = SerializableConverter.class)
     @Target(Serializable.class)
-    @Column(name = "PROPERTY", nullable = false, updatable = false, columnDefinition = "BYTEA")
+    @Column(name = "PROPERTY", columnDefinition = "BYTEA")
     private P property;
 
-    @Column(name = "BEGINNING", nullable = true, updatable = true, columnDefinition = "TIMESTAMP")
+    @Column(name = "BEGINNING", columnDefinition = "TIMESTAMP")
     private Instant from;
 
-    @Column(name = "ENDING", nullable = true, updatable = true, columnDefinition = "TIMESTAMP")
+    @Column(name = "ENDING", columnDefinition = "TIMESTAMP")
     private Instant to;
 
     /**

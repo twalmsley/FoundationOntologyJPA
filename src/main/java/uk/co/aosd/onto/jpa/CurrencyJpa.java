@@ -18,13 +18,13 @@ import uk.co.aosd.onto.money.Currency;
 @EqualsAndHashCode(callSuper = true)
 public class CurrencyJpa extends UniquelyIdentifiableJpa implements Currency {
 
-    @Column(name = "ABBREVIATION", nullable = false, columnDefinition = "VARCHAR(3)")
+    @Column(name = "ABBREVIATION", columnDefinition = "VARCHAR(3)")
     private String abbreviation;
 
-    @Column(name = "NAME", nullable = false, columnDefinition = "VARCHAR(255)")
+    @Column(name = "NAME", columnDefinition = "VARCHAR(255)")
     private String name;
 
-    @Column(name = "SYMBOL", nullable = false, columnDefinition = "CHAR(1)")
+    @Column(name = "SYMBOL", columnDefinition = "CHAR(1)")
     private char symbol;
 
     /**

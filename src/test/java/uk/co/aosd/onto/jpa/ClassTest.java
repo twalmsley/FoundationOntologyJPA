@@ -26,7 +26,7 @@ public class ClassTest {
 
     @BeforeAll
     public static void setUpClass() {
-        emf = Persistence.createEntityManagerFactory("postgres-persistence-unit");
+        emf = Persistence.createEntityManagerFactory("persistence-unit");
     }
 
     @BeforeEach
@@ -62,6 +62,8 @@ public class ClassTest {
         final var entity = new ClassJpa<UniquelyIdentifiableJpa>(Util.randId(), Set.of(e1, e2));
 
         em.getTransaction().begin();
+        em.persist(e2);
+        em.persist(e1);
         em.persist(entity);
         em.getTransaction().commit();
 

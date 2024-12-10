@@ -25,12 +25,12 @@ import uk.co.aosd.onto.jpa.converters.ScalarValueConverter;
 @NoArgsConstructor
 @EqualsAndHashCode(callSuper = true)
 public class AggregateJpa<N extends Number, U extends Unit, T> extends IndividualJpa<Aggregated, Disaggregated> implements Aggregate<N, U, T> {
-    @Column(name = "KIND", nullable = false, length = 255, unique = true, updatable = false, columnDefinition = "VARCHAR(255)")
+    @Column(name = "KIND", length = 255, columnDefinition = "VARCHAR(255)")
     @Convert(converter = ClassConverter.class)
     @Target(Class.class)
     private Class<T> kind;
 
-    @Column(name = "QUANTITY", nullable = false, updatable = false, columnDefinition = "VARCHAR(255)")
+    @Column(name = "QUANTITY", columnDefinition = "VARCHAR(255)")
     @Convert(converter = ScalarValueConverter.class)
     @Target(ScalarValue.class)
     private ScalarValue<N, U> quantity;

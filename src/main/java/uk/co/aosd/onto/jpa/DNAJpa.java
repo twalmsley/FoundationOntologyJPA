@@ -18,7 +18,7 @@ import uk.co.aosd.onto.biological.DNA;
 @EqualsAndHashCode(callSuper = true)
 public class DNAJpa extends UniquelyIdentifiableJpa implements DNA {
 
-    @Column(name = "DNA_VALUE", nullable = false, updatable = false, columnDefinition = "TEXT")
+    @Column(name = "DNA_VALUE", columnDefinition = "TEXT")
     private String dna;
 
     /**

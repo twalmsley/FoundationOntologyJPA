@@ -34,7 +34,7 @@ public class AgglomerateTest {
 
     @BeforeAll
     public static void setUpClass() {
-        emf = Persistence.createEntityManagerFactory("postgres-persistence-unit");
+        emf = Persistence.createEntityManagerFactory("persistence-unit");
     }
 
     @BeforeEach

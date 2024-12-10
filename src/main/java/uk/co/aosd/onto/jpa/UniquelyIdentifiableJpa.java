@@ -16,12 +16,12 @@ import uk.co.aosd.onto.foundation.UniquelyIdentifiable;
  * @author Tony Walmsley
  */
 @Entity(name = "UNIQUELY_IDENTIFIABLE")
-@Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
+@Inheritance(strategy = InheritanceType.JOINED)
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
 public class UniquelyIdentifiableJpa implements UniquelyIdentifiable {
     @Id
-    @Column(name = "IDENTIFIER", nullable = false, updatable = false, unique = true, length = 36, columnDefinition = "VARCHAR(36)")
+    @Column(name = "IDENTIFIER", columnDefinition = "VARCHAR(36)")
     private String identifier;
 }

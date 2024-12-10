@@ -2,9 +2,11 @@ package uk.co.aosd.onto.jpa.events;
 
 import java.time.Instant;
 
+import jakarta.persistence.DiscriminatorValue;
 import jakarta.persistence.Entity;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
+import lombok.NoArgsConstructor;
 import uk.co.aosd.onto.events.Dissolved;
 
 /**
@@ -12,8 +14,10 @@ import uk.co.aosd.onto.events.Dissolved;
  *
  * @author Tony Walmsley
  */
-@Entity(name = "DISSOLVED_EVENT")
+@Entity
+@DiscriminatorValue("Dissolved")
 @Data
+@NoArgsConstructor
 @EqualsAndHashCode(callSuper = true)
 public class DissolvedJpa extends EventJpa implements Dissolved {
     public DissolvedJpa(final String identifier, final Instant from, final Instant to) {

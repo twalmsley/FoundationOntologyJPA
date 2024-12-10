@@ -34,7 +34,7 @@ public class ScalarAttributeJpa<I extends Individual<? extends Event, ? extends 
 
     @Convert(converter = ScalarValueConverter.class)
     @Target(ScalarValueJpa.class)
-    @Column(name = "PROPERTY", nullable = false, updatable = false, columnDefinition = "VARCHAR(255)")
+    @Column(name = "PROPERTY", columnDefinition = "VARCHAR(255)")
     private ScalarValue<N, U> property;
 
     @Column(name = "BEGINNING")

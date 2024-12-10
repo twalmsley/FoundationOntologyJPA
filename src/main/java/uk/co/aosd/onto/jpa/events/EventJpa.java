@@ -6,13 +6,13 @@ import jakarta.persistence.Column;
 import jakarta.persistence.DiscriminatorColumn;
 import jakarta.persistence.DiscriminatorType;
 import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
 import jakarta.persistence.Inheritance;
 import jakarta.persistence.InheritanceType;
+import lombok.AllArgsConstructor;
 import lombok.Data;
-import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 import uk.co.aosd.onto.foundation.Event;
-import uk.co.aosd.onto.jpa.UniquelyIdentifiableJpa;
 
 /**
  * An implementation of the Event interface.
@@ -20,24 +20,20 @@ import uk.co.aosd.onto.jpa.UniquelyIdentifiableJpa;
  * @author Tony Walmsley
  */
 @Entity(name = "EVENT")
-@Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
+@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
 @Data
 @NoArgsConstructor
-@EqualsAndHashCode(callSuper = true)
+@AllArgsConstructor
 @DiscriminatorColumn(name = "EVENT_TYPE", discriminatorType = DiscriminatorType.STRING)
-public class EventJpa extends UniquelyIdentifiableJpa implements Event {
+public class EventJpa implements Event {
+    @Id
+    @Column(name = "IDENTIFIER", columnDefinition = "VARCHAR(36)")
+    private String identifier;
+
     @Column(name = "BEGINNING", nullable = true)
     private Instant from;
 
     @Column(name = "ENDING", nullable = true)
     private Instant to;
 
-    /**
-     * Constructor.
-     */
-    public EventJpa(final String identifier, final Instant from, final Instant to) {
-        super(identifier);
-        this.from = from;
-        this.to = to;
-    }
 }

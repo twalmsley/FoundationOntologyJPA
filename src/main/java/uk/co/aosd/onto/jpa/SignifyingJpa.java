@@ -22,10 +22,10 @@ import uk.co.aosd.onto.signifying.Signifying;
 @EqualsAndHashCode(callSuper = true)
 public class SignifyingJpa extends IndividualJpa<Resignified, Resignified> implements Signifying<String> {
 
-    @Column(name = "ACTIONS_DESCRIPTION", nullable = false, updatable = false, columnDefinition = "TEXT")
+    @Column(name = "ACTIONS_DESCRIPTION", columnDefinition = "TEXT")
     private String actionsDescription;
 
-    @Column(name = "NAME", nullable = false, updatable = true, columnDefinition = "TEXT")
+    @Column(name = "NAME", columnDefinition = "TEXT")
     private String name;
 
     @ManyToOne(targetEntity = LanguageJpa.class)

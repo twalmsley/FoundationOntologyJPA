@@ -21,7 +21,7 @@ import uk.co.aosd.onto.signifying.Signifier;
 @EqualsAndHashCode(callSuper = true)
 public class SignifierJpa extends IndividualJpa<Resignified, Resignified> implements Signifier<String> {
 
-    @Column(name = "NAME", nullable = false, updatable = true, columnDefinition = "TEXT")
+    @Column(name = "NAME", columnDefinition = "TEXT")
     private String name;
 
     @ManyToOne(targetEntity = LanguageJpa.class)

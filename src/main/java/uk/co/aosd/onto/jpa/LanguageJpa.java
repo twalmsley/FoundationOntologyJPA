@@ -18,7 +18,7 @@ import uk.co.aosd.onto.language.Language;
 @EqualsAndHashCode(callSuper = true)
 public class LanguageJpa extends UniquelyIdentifiableJpa implements Language {
 
-    @Column(name = "NAME", nullable = false, updatable = false, columnDefinition = "VARCHAR(255)")
+    @Column(name = "NAME", columnDefinition = "VARCHAR(255)")
     private String name;
 
     public LanguageJpa(final String identifier, final String name) {

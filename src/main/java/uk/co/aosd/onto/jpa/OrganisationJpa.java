@@ -27,7 +27,7 @@ public class OrganisationJpa<R extends Role> extends IndividualJpa<Formed, Disso
     @OneToOne(targetEntity = ClassJpa.class)
     private Class<Membership<R>> members;
 
-    @Column(name = "PURPOSE", nullable = false, updatable = true, columnDefinition = "TEXT")
+    @Column(name = "PURPOSE", columnDefinition = "TEXT")
     private String purpose;
 
     @OneToOne(targetEntity = ClassJpa.class)

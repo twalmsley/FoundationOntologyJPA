@@ -29,10 +29,10 @@ public class EmploymentJpa extends IndividualJpa<Appointed, Removed> implements 
     @ManyToOne(targetEntity = HumanJpa.class)
     private Human employee;
 
-    @Column(name = "DESCRIPTION", nullable = false, updatable = true, columnDefinition = "TEXT")
+    @Column(name = "DESCRIPTION", columnDefinition = "TEXT")
     private String actionsDescription;
 
-    @Column(name = "CONTRACT", nullable = false, updatable = true, columnDefinition = "TEXT")
+    @Column(name = "CONTRACT", columnDefinition = "TEXT")
     private String contract;
 
     /**

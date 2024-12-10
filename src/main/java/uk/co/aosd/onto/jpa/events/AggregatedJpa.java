@@ -2,9 +2,11 @@ package uk.co.aosd.onto.jpa.events;
 
 import java.time.Instant;
 
+import jakarta.persistence.DiscriminatorValue;
 import jakarta.persistence.Entity;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
+import lombok.NoArgsConstructor;
 import uk.co.aosd.onto.events.Aggregated;
 
 /**
@@ -12,8 +14,10 @@ import uk.co.aosd.onto.events.Aggregated;
  *
  * @author Tony Walmsley
  */
-@Entity(name = "AGGREGATED_EVENT")
+@Entity
+@DiscriminatorValue("Aggregated")
 @Data
+@NoArgsConstructor
 @EqualsAndHashCode(callSuper = true)
 public class AggregatedJpa extends EventJpa implements Aggregated {
     public AggregatedJpa(final String identifier, final Instant from, final Instant to) {
