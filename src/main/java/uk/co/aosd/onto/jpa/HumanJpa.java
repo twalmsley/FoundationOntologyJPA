@@ -1,6 +1,7 @@
 package uk.co.aosd.onto.jpa;
 
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToOne;
 import lombok.Data;
@@ -25,16 +26,16 @@ import uk.co.aosd.onto.signifying.Signifier;
 @EqualsAndHashCode(callSuper = true)
 public class HumanJpa extends IndividualJpa<Birth, Death> implements Human {
 
-    @OneToOne(targetEntity = ClassJpa.class)
+    @OneToOne(targetEntity = ClassJpa.class, fetch = FetchType.LAZY)
     private Class<Signifier<String>> names;
 
     @ManyToOne(targetEntity = LanguageJpa.class)
     private Language nativeLanguage;
 
-    @OneToOne(targetEntity = ClassJpa.class)
+    @OneToOne(targetEntity = ClassJpa.class, fetch = FetchType.LAZY)
     private Class<Language> languages;
 
-    @OneToOne(targetEntity = DNAJpa.class)
+    @OneToOne(targetEntity = DNAJpa.class, fetch = FetchType.LAZY)
     private DNA dna;
 
     /**

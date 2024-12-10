@@ -2,6 +2,7 @@ package uk.co.aosd.onto.jpa;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.OneToOne;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
@@ -30,10 +31,10 @@ public class OrganisationJpa<R extends Role> extends IndividualJpa<Formed, Disso
     @Column(name = "PURPOSE", columnDefinition = "TEXT")
     private String purpose;
 
-    @OneToOne(targetEntity = ClassJpa.class)
+    @OneToOne(targetEntity = ClassJpa.class, fetch = FetchType.LAZY)
     private Class<Organisation> units;
 
-    @OneToOne(targetEntity = ClassJpa.class)
+    @OneToOne(targetEntity = ClassJpa.class, fetch = FetchType.LAZY)
     private Class<Signifier<String>> names;
 
     /**
