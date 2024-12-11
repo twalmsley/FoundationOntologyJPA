@@ -211,11 +211,15 @@ public class PersistenceTest {
     @Test
     public void testClasses() {
 
-        final UniquelyIdentifiableJpa e1 = new UniquelyIdentifiableJpa(Util.randId());
-        final UniquelyIdentifiableJpa e2 = new UniquelyIdentifiableJpa(Util.randId());
-        final var entity = new ClassJpa<UniquelyIdentifiableJpa>(Util.randId(), Set.of(e1, e2));
+        final var beginning = new CreatedJpa(Util.randId(), Instant.now(), Instant.now());
+        final var ending = new DeletedJpa(Util.randId(), Instant.now(), Instant.now());
+        final var e1 = new IndividualJpa<>(Util.randId(), beginning, ending);
+        final var e2 = new IndividualJpa<>(Util.randId(), beginning, ending);
+        final var entity = new ClassJpa<UniquelyIdentifiable>(Util.randId(), Set.of(e1, e2));
 
         em.getTransaction().begin();
+        em.persist(beginning);
+        em.persist(ending);
         em.persist(e2);
         em.persist(e1);
         em.persist(entity);
