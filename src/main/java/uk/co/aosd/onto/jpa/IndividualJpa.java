@@ -1,6 +1,7 @@
 package uk.co.aosd.onto.jpa;
 
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.ManyToOne;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
@@ -20,10 +21,10 @@ import uk.co.aosd.onto.jpa.events.EventJpa;
 @EqualsAndHashCode(callSuper = true)
 public class IndividualJpa<B extends Event, E extends Event> extends UniquelyIdentifiableJpa implements Individual<B, E> {
 
-    @ManyToOne(targetEntity = EventJpa.class)
+    @ManyToOne(targetEntity = EventJpa.class, fetch = FetchType.LAZY)
     private B beginning;
 
-    @ManyToOne(targetEntity = EventJpa.class)
+    @ManyToOne(targetEntity = EventJpa.class, fetch = FetchType.LAZY)
     private E ending;
 
     /**

@@ -2,8 +2,8 @@ package uk.co.aosd.onto.jpa;
 
 import java.util.Set;
 
-import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.OneToMany;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
@@ -26,8 +26,7 @@ import uk.co.aosd.onto.jpa.events.EventJpa;
 @EqualsAndHashCode(callSuper = true)
 public class AgglomerateJpa extends IndividualJpa<Aggregated, Disaggregated> implements Agglomerate {
 
-    @OneToMany
-    @Column(name = "PARTS")
+    @OneToMany(fetch = FetchType.LAZY)
     private Set<IndividualJpa<EventJpa, EventJpa>> parts;
 
     /**

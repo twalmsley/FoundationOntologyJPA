@@ -25,7 +25,7 @@ import uk.co.aosd.onto.signifying.Signifier;
 @NoArgsConstructor
 @EqualsAndHashCode(callSuper = true)
 public class OrganisationJpa<R extends Role> extends IndividualJpa<Formed, Dissolved> implements Organisation {
-    @OneToOne(targetEntity = ClassJpa.class)
+    @OneToOne(targetEntity = ClassJpa.class, fetch = FetchType.LAZY)
     private Class<Membership<R>> members;
 
     @Column(name = "PURPOSE", columnDefinition = "TEXT")

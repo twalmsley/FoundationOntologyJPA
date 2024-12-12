@@ -5,6 +5,7 @@ import java.time.Instant;
 import jakarta.persistence.Column;
 import jakarta.persistence.Convert;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.ManyToOne;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
@@ -29,7 +30,7 @@ import uk.co.aosd.onto.jpa.converters.ScalarValueConverter;
 public class ScalarAttributeJpa<I extends Individual<? extends Event, ? extends Event>, N extends Number, U extends Unit> extends UniquelyIdentifiableJpa
     implements ScalarAttribute<I, N, U> {
 
-    @ManyToOne(targetEntity = IndividualJpa.class)
+    @ManyToOne(targetEntity = IndividualJpa.class, fetch = FetchType.LAZY)
     private I individual;
 
     @Convert(converter = ScalarValueConverter.class)

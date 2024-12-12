@@ -1,6 +1,7 @@
 package uk.co.aosd.onto.jpa;
 
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.ManyToOne;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -23,10 +24,10 @@ import uk.co.aosd.onto.organisation.Membership;
 @NoArgsConstructor
 @EqualsAndHashCode(callSuper = true)
 public class MembershipJpa<R extends Role> extends IndividualJpa<Appointed, Removed> implements Membership<R> {
-    @ManyToOne(targetEntity = HumanJpa.class)
+    @ManyToOne(targetEntity = HumanJpa.class, fetch = FetchType.LAZY)
     private Human member;
 
-    @ManyToOne(targetEntity = RoleJpa.class)
+    @ManyToOne(targetEntity = RoleJpa.class, fetch = FetchType.LAZY)
     private R role;
 
     /**

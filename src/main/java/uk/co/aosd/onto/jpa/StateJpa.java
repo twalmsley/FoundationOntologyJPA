@@ -1,6 +1,7 @@
 package uk.co.aosd.onto.jpa;
 
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.ManyToOne;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
@@ -20,7 +21,7 @@ import uk.co.aosd.onto.foundation.State;
 @EqualsAndHashCode(callSuper = true)
 public class StateJpa<B extends Event, E extends Event, V extends Individual<?, ?>> extends IndividualJpa<B, E> implements State<B, E, V> {
 
-    @ManyToOne(targetEntity = IndividualJpa.class)
+    @ManyToOne(targetEntity = IndividualJpa.class, fetch = FetchType.LAZY)
     private V individual;
 
     /**

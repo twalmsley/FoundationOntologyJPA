@@ -2,6 +2,7 @@ package uk.co.aosd.onto.jpa;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.ManyToOne;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
@@ -28,10 +29,10 @@ public class SignifyingJpa extends IndividualJpa<Resignified, Resignified> imple
     @Column(name = "NAME", columnDefinition = "TEXT")
     private String name;
 
-    @ManyToOne(targetEntity = LanguageJpa.class)
+    @ManyToOne(targetEntity = LanguageJpa.class, fetch = FetchType.LAZY)
     private Language language;
 
-    @ManyToOne(targetEntity = UniquelyIdentifiableJpa.class)
+    @ManyToOne(targetEntity = UniquelyIdentifiableJpa.class, fetch = FetchType.LAZY)
     private UniquelyIdentifiable named;
 
     /**

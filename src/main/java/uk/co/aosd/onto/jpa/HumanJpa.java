@@ -29,7 +29,7 @@ public class HumanJpa extends IndividualJpa<Birth, Death> implements Human {
     @OneToOne(targetEntity = ClassJpa.class, fetch = FetchType.LAZY)
     private Class<Signifier<String>> names;
 
-    @ManyToOne(targetEntity = LanguageJpa.class)
+    @ManyToOne(targetEntity = LanguageJpa.class, fetch = FetchType.LAZY)
     private Language nativeLanguage;
 
     @OneToOne(targetEntity = ClassJpa.class, fetch = FetchType.LAZY)

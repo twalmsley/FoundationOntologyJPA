@@ -2,6 +2,7 @@ package uk.co.aosd.onto.jpa;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.ManyToOne;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
@@ -24,7 +25,7 @@ public class SignifierJpa extends IndividualJpa<Resignified, Resignified> implem
     @Column(name = "NAME", columnDefinition = "TEXT")
     private String name;
 
-    @ManyToOne(targetEntity = LanguageJpa.class)
+    @ManyToOne(targetEntity = LanguageJpa.class, fetch = FetchType.LAZY)
     private Language language;
 
     /**

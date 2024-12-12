@@ -2,6 +2,7 @@ package uk.co.aosd.onto.jpa;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.ManyToOne;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
@@ -23,10 +24,10 @@ import uk.co.aosd.onto.organisation.Organisation;
 @EqualsAndHashCode(callSuper = true)
 public class EmploymentJpa extends IndividualJpa<Appointed, Removed> implements Employment<String> {
 
-    @ManyToOne(targetEntity = OrganisationJpa.class)
+    @ManyToOne(targetEntity = OrganisationJpa.class, fetch = FetchType.LAZY)
     private Organisation employer;
 
-    @ManyToOne(targetEntity = HumanJpa.class)
+    @ManyToOne(targetEntity = HumanJpa.class, fetch = FetchType.LAZY)
     private Human employee;
 
     @Column(name = "DESCRIPTION", columnDefinition = "TEXT")

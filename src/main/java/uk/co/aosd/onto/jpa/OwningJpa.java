@@ -2,6 +2,7 @@ package uk.co.aosd.onto.jpa;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.ManyToOne;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
@@ -26,10 +27,10 @@ public class OwningJpa<A extends Event, B extends Event, C extends Event, D exte
     @Column(name = "ACTIONS_DESCRIPTION", columnDefinition = "TEXT")
     private String actionsDescription;
 
-    @ManyToOne(targetEntity = IndividualJpa.class)
+    @ManyToOne(targetEntity = IndividualJpa.class, fetch = FetchType.LAZY)
     private Individual<A, B> owner;
 
-    @ManyToOne(targetEntity = IndividualJpa.class)
+    @ManyToOne(targetEntity = IndividualJpa.class, fetch = FetchType.LAZY)
     private Individual<C, D> owned;
 
     /**
