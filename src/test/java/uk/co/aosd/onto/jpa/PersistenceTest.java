@@ -230,6 +230,19 @@ public class PersistenceTest {
         assertEquals(entity.getIdentifier(), found.getIdentifier());
         assertTrue(entity.getMembers().contains(e1));
         assertTrue(entity.getMembers().contains(e2));
+
+        // Save another class with the same members
+        final var entity2 = new ClassJpa<UniquelyIdentifiable>(Util.randId(), Set.of(e1, e2));
+        em.getTransaction().begin();
+        em.persist(entity2);
+        em.getTransaction().commit();
+
+        // Check that the members are the same
+        final var found2 = em.find(ClassJpa.class, entity2.getIdentifier());
+        assertNotNull(found2);
+        assertEquals(entity2.getIdentifier(), found2.getIdentifier());
+        assertTrue(entity2.getMembers().contains(e1));
+        assertTrue(entity2.getMembers().contains(e2));
     }
 
     @Test

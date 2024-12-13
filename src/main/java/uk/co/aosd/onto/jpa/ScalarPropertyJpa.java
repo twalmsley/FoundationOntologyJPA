@@ -6,7 +6,7 @@ import jakarta.persistence.Column;
 import jakarta.persistence.Convert;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
-import jakarta.persistence.OneToMany;
+import jakarta.persistence.ManyToMany;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
@@ -34,7 +34,7 @@ public class ScalarPropertyJpa<T extends UniquelyIdentifiable, U extends Number,
     @Column(name = "PROPERTY", columnDefinition = "VARCHAR(255)")
     private ScalarValue<U, V> property;
 
-    @OneToMany(targetEntity = UniquelyIdentifiableJpa.class, fetch = FetchType.LAZY)
+    @ManyToMany(targetEntity = UniquelyIdentifiableJpa.class, fetch = FetchType.LAZY)
     private Set<T> members;
 
     /**

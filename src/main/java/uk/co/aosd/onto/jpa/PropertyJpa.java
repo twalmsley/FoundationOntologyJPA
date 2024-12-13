@@ -7,7 +7,7 @@ import jakarta.persistence.Column;
 import jakarta.persistence.Convert;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
-import jakarta.persistence.OneToMany;
+import jakarta.persistence.ManyToMany;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
@@ -27,7 +27,7 @@ import uk.co.aosd.onto.jpa.converters.SerializableConverter;
 @EqualsAndHashCode(callSuper = true)
 public class PropertyJpa<T extends UniquelyIdentifiable, U extends Serializable> extends UniquelyIdentifiableJpa implements Property<T, U> {
 
-    @OneToMany(targetEntity = UniquelyIdentifiableJpa.class, fetch = FetchType.LAZY)
+    @ManyToMany(targetEntity = UniquelyIdentifiableJpa.class, fetch = FetchType.LAZY)
     private Set<T> members;
 
     @Convert(converter = SerializableConverter.class)

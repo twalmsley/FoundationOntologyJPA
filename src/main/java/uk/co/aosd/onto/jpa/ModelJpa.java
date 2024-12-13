@@ -5,7 +5,7 @@ import java.util.Set;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
-import jakarta.persistence.OneToMany;
+import jakarta.persistence.ManyToMany;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
@@ -23,7 +23,7 @@ import uk.co.aosd.onto.model.Model;
 @EqualsAndHashCode(callSuper = true)
 public class ModelJpa extends UniquelyIdentifiableJpa implements Model {
 
-    @OneToMany(targetEntity = UniquelyIdentifiableJpa.class, fetch = FetchType.LAZY)
+    @ManyToMany(targetEntity = UniquelyIdentifiableJpa.class, fetch = FetchType.LAZY)
     private Set<UniquelyIdentifiable> things;
 
     public Optional<UniquelyIdentifiable> getThing(final String identifier) {
