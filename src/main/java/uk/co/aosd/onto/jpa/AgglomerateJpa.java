@@ -8,11 +8,11 @@ import jakarta.persistence.OneToMany;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
-import uk.co.aosd.onto.events.Aggregated;
-import uk.co.aosd.onto.events.Disaggregated;
 import uk.co.aosd.onto.foundation.Agglomerate;
 import uk.co.aosd.onto.foundation.Event;
 import uk.co.aosd.onto.foundation.Individual;
+import uk.co.aosd.onto.jpa.events.AggregatedJpa;
+import uk.co.aosd.onto.jpa.events.DisaggregatedJpa;
 import uk.co.aosd.onto.jpa.events.EventJpa;
 
 /**
@@ -24,15 +24,16 @@ import uk.co.aosd.onto.jpa.events.EventJpa;
 @Data
 @NoArgsConstructor
 @EqualsAndHashCode(callSuper = true)
-public class AgglomerateJpa extends IndividualJpa<Aggregated, Disaggregated> implements Agglomerate {
+public class AgglomerateJpa extends IndividualJpa<AggregatedJpa, DisaggregatedJpa> implements Agglomerate<AggregatedJpa, DisaggregatedJpa> {
 
     @OneToMany(fetch = FetchType.LAZY)
-    private Set<IndividualJpa<EventJpa, EventJpa>> parts;
+    private Set<IndividualJpa<? extends EventJpa, ? extends EventJpa>> parts;
 
     /**
      * Constructor.
      */
-    public AgglomerateJpa(final String identifier, final Set<IndividualJpa<EventJpa, EventJpa>> parts, final Aggregated beginning, final Disaggregated ending) {
+    public AgglomerateJpa(final String identifier, final Set<IndividualJpa<? extends EventJpa, ? extends EventJpa>> parts, final AggregatedJpa beginning,
+        final DisaggregatedJpa ending) {
         super(identifier, beginning, ending);
         this.parts = parts;
     }

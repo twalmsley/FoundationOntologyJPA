@@ -7,10 +7,9 @@ import jakarta.persistence.ManyToOne;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
-import uk.co.aosd.onto.events.TransferredFrom;
-import uk.co.aosd.onto.events.TransferredTo;
-import uk.co.aosd.onto.foundation.Event;
-import uk.co.aosd.onto.ownership.Owning;
+import uk.co.aosd.onto.jpa.events.EventJpa;
+import uk.co.aosd.onto.jpa.events.TransferredFromJpa;
+import uk.co.aosd.onto.jpa.events.TransferredToJpa;
 import uk.co.aosd.onto.ownership.TransferringOfOwnership;
 
 /**
@@ -22,23 +21,24 @@ import uk.co.aosd.onto.ownership.TransferringOfOwnership;
 @Data
 @NoArgsConstructor
 @EqualsAndHashCode(callSuper = true)
-public class TransferringOfOwnershipJpa<A extends Event, B extends Event, C extends Event, D extends Event>
-    extends IndividualJpa<TransferredFrom, TransferredTo> implements TransferringOfOwnership<A, B, C, D> {
+public class TransferringOfOwnershipJpa<A extends EventJpa, B extends EventJpa, C extends EventJpa, D extends EventJpa>
+    extends IndividualJpa<TransferredFromJpa, TransferredToJpa> implements TransferringOfOwnership<A, B, C, D, TransferredFromJpa, TransferredToJpa> {
 
     @Column(name = "ACTIONS_DESCRIPTION", columnDefinition = "TEXT")
     private String actionsDescription;
 
     @ManyToOne(targetEntity = OwningJpa.class, fetch = FetchType.LAZY)
-    private Owning<A, B, C, D> from;
+    private OwningJpa<A, B, C, D> from;
 
     @ManyToOne(targetEntity = OwningJpa.class, fetch = FetchType.LAZY)
-    private Owning<A, B, C, D> to;
+    private OwningJpa<A, B, C, D> to;
 
     /**
      * Constructor.
      */
-    public TransferringOfOwnershipJpa(final String identifier, final String actionsDescription, final Owning<A, B, C, D> from, final Owning<A, B, C, D> to,
-        final TransferredFrom beginning, final TransferredTo ending) {
+    public TransferringOfOwnershipJpa(final String identifier, final String actionsDescription, final OwningJpa<A, B, C, D> from,
+        final OwningJpa<A, B, C, D> to,
+        final TransferredFromJpa beginning, final TransferredToJpa ending) {
         super(identifier, beginning, ending);
         this.actionsDescription = actionsDescription;
         this.from = from;

@@ -7,13 +7,13 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 import org.hibernate.annotations.Target;
-import uk.co.aosd.onto.events.Aggregated;
-import uk.co.aosd.onto.events.Disaggregated;
 import uk.co.aosd.onto.foundation.Aggregate;
 import uk.co.aosd.onto.foundation.ScalarValue;
 import uk.co.aosd.onto.foundation.Unit;
 import uk.co.aosd.onto.jpa.converters.ClassConverter;
 import uk.co.aosd.onto.jpa.converters.ScalarValueConverter;
+import uk.co.aosd.onto.jpa.events.AggregatedJpa;
+import uk.co.aosd.onto.jpa.events.DisaggregatedJpa;
 
 /**
  * An implementation of the Aggregation interface.
@@ -24,7 +24,9 @@ import uk.co.aosd.onto.jpa.converters.ScalarValueConverter;
 @Data
 @NoArgsConstructor
 @EqualsAndHashCode(callSuper = true)
-public class AggregateJpa<N extends Number, U extends Unit, T> extends IndividualJpa<Aggregated, Disaggregated> implements Aggregate<N, U, T> {
+public class AggregateJpa<N extends Number, U extends Unit, T> extends IndividualJpa<AggregatedJpa, DisaggregatedJpa>
+    implements Aggregate<N, U, T, AggregatedJpa, DisaggregatedJpa> {
+
     @Column(name = "KIND", length = 255, columnDefinition = "VARCHAR(255)")
     @Convert(converter = ClassConverter.class)
     @Target(Class.class)
@@ -38,8 +40,8 @@ public class AggregateJpa<N extends Number, U extends Unit, T> extends Individua
     /**
      * Constructor.
      */
-    public AggregateJpa(final String identifier, final Class<T> kind, final ScalarValue<N, U> quantity, final Aggregated beginning,
-        final Disaggregated ending) {
+    public AggregateJpa(final String identifier, final Class<T> kind, final ScalarValue<N, U> quantity, final AggregatedJpa beginning,
+        final DisaggregatedJpa ending) {
         super(identifier, beginning, ending);
         this.kind = kind;
         this.quantity = quantity;

@@ -7,8 +7,8 @@ import jakarta.persistence.ManyToOne;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
-import uk.co.aosd.onto.events.Resignified;
 import uk.co.aosd.onto.foundation.UniquelyIdentifiable;
+import uk.co.aosd.onto.jpa.events.ResignifiedJpa;
 import uk.co.aosd.onto.language.Language;
 import uk.co.aosd.onto.signifying.Signifying;
 
@@ -21,7 +21,7 @@ import uk.co.aosd.onto.signifying.Signifying;
 @Data
 @NoArgsConstructor
 @EqualsAndHashCode(callSuper = true)
-public class SignifyingJpa extends IndividualJpa<Resignified, Resignified> implements Signifying<String> {
+public class SignifyingJpa extends IndividualJpa<ResignifiedJpa, ResignifiedJpa> implements Signifying<String, ResignifiedJpa> {
 
     @Column(name = "ACTIONS_DESCRIPTION", columnDefinition = "TEXT")
     private String actionsDescription;
@@ -39,7 +39,7 @@ public class SignifyingJpa extends IndividualJpa<Resignified, Resignified> imple
      * Constructor.
      */
     public SignifyingJpa(final String identifier, final String actionsDescription, final String name, final Language language, final UniquelyIdentifiable named,
-        final Resignified beginning, final Resignified ending) {
+        final ResignifiedJpa beginning, final ResignifiedJpa ending) {
         super(identifier, beginning, ending);
         this.actionsDescription = actionsDescription;
         this.name = name;

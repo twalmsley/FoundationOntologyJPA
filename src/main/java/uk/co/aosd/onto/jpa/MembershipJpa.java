@@ -8,9 +8,12 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 import uk.co.aosd.onto.biological.Human;
-import uk.co.aosd.onto.events.Appointed;
-import uk.co.aosd.onto.events.Removed;
 import uk.co.aosd.onto.foundation.Role;
+import uk.co.aosd.onto.jpa.events.AppointedJpa;
+import uk.co.aosd.onto.jpa.events.BirthJpa;
+import uk.co.aosd.onto.jpa.events.DeathJpa;
+import uk.co.aosd.onto.jpa.events.RemovedJpa;
+import uk.co.aosd.onto.jpa.events.ResignifiedJpa;
 import uk.co.aosd.onto.organisation.Membership;
 
 /**
@@ -23,9 +26,11 @@ import uk.co.aosd.onto.organisation.Membership;
 @AllArgsConstructor
 @NoArgsConstructor
 @EqualsAndHashCode(callSuper = true)
-public class MembershipJpa<R extends Role> extends IndividualJpa<Appointed, Removed> implements Membership<R> {
+public class MembershipJpa<R extends Role> extends IndividualJpa<AppointedJpa, RemovedJpa>
+    implements Membership<R, AppointedJpa, RemovedJpa, BirthJpa, DeathJpa, ResignifiedJpa, LanguageJpa> {
+
     @ManyToOne(targetEntity = HumanJpa.class, fetch = FetchType.LAZY)
-    private Human member;
+    private Human<BirthJpa, DeathJpa, ResignifiedJpa, LanguageJpa> member;
 
     @ManyToOne(targetEntity = RoleJpa.class, fetch = FetchType.LAZY)
     private R role;
@@ -33,7 +38,9 @@ public class MembershipJpa<R extends Role> extends IndividualJpa<Appointed, Remo
     /**
      * Constructor.
      */
-    public MembershipJpa(final String identifier, final Human member, final R role, final Appointed beginning, final Removed ending) {
+    public MembershipJpa(final String identifier, final Human<BirthJpa, DeathJpa, ResignifiedJpa, LanguageJpa> member, final R role,
+        final AppointedJpa beginning,
+        final RemovedJpa ending) {
         super(identifier, beginning, ending);
         this.member = member;
         this.role = role;

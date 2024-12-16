@@ -6,9 +6,9 @@ import jakarta.persistence.ManyToOne;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
-import uk.co.aosd.onto.foundation.Event;
 import uk.co.aosd.onto.foundation.Individual;
 import uk.co.aosd.onto.foundation.State;
+import uk.co.aosd.onto.jpa.events.EventJpa;
 
 /**
  * An implementation of the State interface.
@@ -19,7 +19,7 @@ import uk.co.aosd.onto.foundation.State;
 @Data
 @NoArgsConstructor
 @EqualsAndHashCode(callSuper = true)
-public class StateJpa<B extends Event, E extends Event, V extends Individual<?, ?>> extends IndividualJpa<B, E> implements State<B, E, V> {
+public class StateJpa<B extends EventJpa, E extends EventJpa, V extends Individual<?, ?>> extends IndividualJpa<B, E> implements State<B, E, V> {
 
     @ManyToOne(targetEntity = IndividualJpa.class, fetch = FetchType.LAZY)
     private V individual;

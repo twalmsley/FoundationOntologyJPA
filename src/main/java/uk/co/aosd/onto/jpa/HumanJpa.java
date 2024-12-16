@@ -9,10 +9,10 @@ import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 import uk.co.aosd.onto.biological.DNA;
 import uk.co.aosd.onto.biological.Human;
-import uk.co.aosd.onto.events.Birth;
-import uk.co.aosd.onto.events.Death;
 import uk.co.aosd.onto.foundation.Class;
-import uk.co.aosd.onto.language.Language;
+import uk.co.aosd.onto.jpa.events.BirthJpa;
+import uk.co.aosd.onto.jpa.events.DeathJpa;
+import uk.co.aosd.onto.jpa.events.ResignifiedJpa;
 import uk.co.aosd.onto.signifying.Signifier;
 
 /**
@@ -24,16 +24,16 @@ import uk.co.aosd.onto.signifying.Signifier;
 @Data
 @NoArgsConstructor
 @EqualsAndHashCode(callSuper = true)
-public class HumanJpa extends IndividualJpa<Birth, Death> implements Human {
+public class HumanJpa extends IndividualJpa<BirthJpa, DeathJpa> implements Human<BirthJpa, DeathJpa, ResignifiedJpa, LanguageJpa> {
 
     @OneToOne(targetEntity = ClassJpa.class, fetch = FetchType.LAZY)
-    private Class<Signifier<String>> names;
+    private Class<Signifier<String, ResignifiedJpa>> names;
 
     @ManyToOne(targetEntity = LanguageJpa.class, fetch = FetchType.LAZY)
-    private Language nativeLanguage;
+    private LanguageJpa nativeLanguage;
 
     @OneToOne(targetEntity = ClassJpa.class, fetch = FetchType.LAZY)
-    private Class<Language> languages;
+    private Class<LanguageJpa> languages;
 
     @OneToOne(targetEntity = DNAJpa.class, fetch = FetchType.LAZY)
     private DNA dna;
@@ -41,12 +41,13 @@ public class HumanJpa extends IndividualJpa<Birth, Death> implements Human {
     /**
      * Constructor.
      */
-    public HumanJpa(final String identifier, final Birth beginning, final Death ending, final Class<Signifier<String>> names, final Language nativeLanguage,
-        final Class<Language> languages, final DNA dna) {
+    public HumanJpa(final String identifier, final BirthJpa beginning, final DeathJpa ending, final Class<Signifier<String, ResignifiedJpa>> names,
+        final LanguageJpa nativeLanguage, final Class<LanguageJpa> languages, final DNA dna) {
         super(identifier, beginning, ending);
         this.names = names;
         this.nativeLanguage = nativeLanguage;
         this.languages = languages;
         this.dna = dna;
     }
+
 }

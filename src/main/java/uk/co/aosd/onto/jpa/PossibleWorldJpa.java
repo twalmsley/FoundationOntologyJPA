@@ -8,11 +8,11 @@ import jakarta.persistence.ManyToMany;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
-import uk.co.aosd.onto.events.Created;
-import uk.co.aosd.onto.events.Deleted;
 import uk.co.aosd.onto.foundation.Event;
 import uk.co.aosd.onto.foundation.Individual;
 import uk.co.aosd.onto.foundation.PossibleWorld;
+import uk.co.aosd.onto.jpa.events.CreatedJpa;
+import uk.co.aosd.onto.jpa.events.DeletedJpa;
 
 /**
  * An implementaton of the PossibleWorld interface.
@@ -23,7 +23,7 @@ import uk.co.aosd.onto.foundation.PossibleWorld;
 @Data
 @NoArgsConstructor
 @EqualsAndHashCode(callSuper = true)
-public class PossibleWorldJpa extends IndividualJpa<Created, Deleted> implements PossibleWorld {
+public class PossibleWorldJpa extends IndividualJpa<CreatedJpa, DeletedJpa> implements PossibleWorld<CreatedJpa, DeletedJpa> {
 
     @ManyToMany(targetEntity = IndividualJpa.class, fetch = FetchType.LAZY)
     private Set<Individual<? extends Event, ? extends Event>> parts;
@@ -31,8 +31,8 @@ public class PossibleWorldJpa extends IndividualJpa<Created, Deleted> implements
     /**
      * Constructor.
      */
-    public PossibleWorldJpa(final String identifier, final Set<Individual<? extends Event, ? extends Event>> parts, final Created beginning,
-        final Deleted ending) {
+    public PossibleWorldJpa(final String identifier, final Set<Individual<? extends Event, ? extends Event>> parts, final CreatedJpa beginning,
+        final DeletedJpa ending) {
         super(identifier, beginning, ending);
         this.parts = parts;
     }

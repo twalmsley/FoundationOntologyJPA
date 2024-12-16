@@ -7,10 +7,10 @@ import jakarta.persistence.ManyToOne;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
-import uk.co.aosd.onto.events.TransferredFrom;
-import uk.co.aosd.onto.events.TransferredTo;
-import uk.co.aosd.onto.foundation.Event;
 import uk.co.aosd.onto.foundation.Individual;
+import uk.co.aosd.onto.jpa.events.EventJpa;
+import uk.co.aosd.onto.jpa.events.TransferredFromJpa;
+import uk.co.aosd.onto.jpa.events.TransferredToJpa;
 import uk.co.aosd.onto.ownership.Owning;
 
 /**
@@ -22,8 +22,9 @@ import uk.co.aosd.onto.ownership.Owning;
 @Data
 @NoArgsConstructor
 @EqualsAndHashCode(callSuper = true)
-public class OwningJpa<A extends Event, B extends Event, C extends Event, D extends Event> extends IndividualJpa<TransferredFrom, TransferredTo>
-    implements Owning<A, B, C, D> {
+public class OwningJpa<A extends EventJpa, B extends EventJpa, C extends EventJpa, D extends EventJpa>
+    extends IndividualJpa<TransferredFromJpa, TransferredToJpa>
+    implements Owning<A, B, C, D, TransferredFromJpa, TransferredToJpa> {
     @Column(name = "ACTIONS_DESCRIPTION", columnDefinition = "TEXT")
     private String actionsDescription;
 
@@ -37,7 +38,7 @@ public class OwningJpa<A extends Event, B extends Event, C extends Event, D exte
      * Constructor.
      */
     public OwningJpa(final String identifier, final String actionsDescription, final Individual<A, B> owner, final Individual<C, D> owned,
-        final TransferredFrom beginning, final TransferredTo ending) {
+        final TransferredFromJpa beginning, final TransferredToJpa ending) {
         super(identifier, beginning, ending);
         this.actionsDescription = actionsDescription;
         this.owner = owner;

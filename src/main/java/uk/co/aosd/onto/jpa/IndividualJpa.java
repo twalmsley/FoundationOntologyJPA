@@ -21,10 +21,10 @@ import uk.co.aosd.onto.jpa.events.EventJpa;
 @EqualsAndHashCode(callSuper = true)
 public class IndividualJpa<B extends Event, E extends Event> extends UniquelyIdentifiableJpa implements Individual<B, E> {
 
-    @ManyToOne(targetEntity = EventJpa.class, fetch = FetchType.LAZY)
+    @ManyToOne(targetEntity = EventJpa.class, fetch = FetchType.EAGER)
     private B beginning;
 
-    @ManyToOne(targetEntity = EventJpa.class, fetch = FetchType.LAZY)
+    @ManyToOne(targetEntity = EventJpa.class, fetch = FetchType.EAGER)
     private E ending;
 
     /**
