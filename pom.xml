@@ -33,7 +33,7 @@
         <dependency>
             <groupId>uk.co.aosd.onto</groupId>
             <artifactId>foundation-ontology</artifactId>
-            <version>0.0.10-SNAPSHOT</version>
+            <version>0.0.10</version>
         </dependency>
         <!-- https://mvnrepository.com/artifact/jakarta.persistence/jakarta.persistence-api -->
         <dependency>
